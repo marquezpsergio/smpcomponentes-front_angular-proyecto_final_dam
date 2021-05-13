@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from "@angular/common/http"
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 // Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -11,6 +11,16 @@ import { HomeComponent } from './core/components/home/home.component';
 import { ComponentesComponent } from './core/components/componentes/componentes.component';
 // Services
 import { ComponenteService } from './core/services/componente.service';
+import { ComponentesCategoriaComponent } from './core/components/componentes-categoria/componentes-categoria.component';
+import { FormsModule } from '@angular/forms';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'configurador', component: ConfiguratorComponent },
+  { path: 'componentes', component: ComponentesComponent },
+  { path: '**', pathMatch: 'full', redirectTo: '' }
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,14 +28,17 @@ import { ComponenteService } from './core/services/componente.service';
     FooterComponent,
     ConfiguratorComponent,
     HomeComponent,
-    ComponentesComponent
+    ComponentesComponent,
+    ComponentesCategoriaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [ComponenteService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
