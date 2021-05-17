@@ -1,0 +1,13 @@
+@media (max-width: 680px) {
+  select {
+    width: 400px;
+  }
+}
+
+@media (min-width: 680px) {
+  select {
+    width: 500px;
+  }
+}
+
+

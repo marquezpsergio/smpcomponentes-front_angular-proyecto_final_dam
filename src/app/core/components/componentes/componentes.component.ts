@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Componente } from '../../../shared/models/componente';
-import { ComponenteService } from '../../services/componente.service';
+import {Component, OnInit} from '@angular/core';
+import {Componente} from '../../../shared/models/componente';
+import {ComponenteService} from '../../services/componente.service';
 
 @Component({
   selector: 'app-componentes',
@@ -11,7 +11,8 @@ export class ComponentesComponent implements OnInit {
 
   componentes: Componente[];
 
-  constructor(private componenteService: ComponenteService) { }
+  constructor(private componenteService: ComponenteService) {
+  }
 
   ngOnInit(): void {
     this.componenteService.getComponentes().subscribe(

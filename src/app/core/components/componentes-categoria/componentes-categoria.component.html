@@ -1,18 +1,22 @@
-<h1>Categoría: {{categoria.nombre}}</h1>
+<h3 *ngIf="categoria">Componentes de la categoría '{{categoria.nombre}}'</h3>
 
-<table class="table table-bordered table-striped">
+<div *ngIf="!componentes" class="alert alert-info">Cargando...</div>
+
+<div *ngIf="componentes?.length == 0" class="alert alert-danger">No hay existen componentes de esta categoría.</div>
+
+<table *ngIf="componentes && componentes.length > 0" class="table table-bordered table-striped">
   <thead>
-    <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Precio</th>
-    </tr>
+  <tr>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Precio</th>
+  </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let componente of componentes">
-      <td>{{componente.id}}</td>
-      <td>{{componente.nombre}}</td>
-      <td>{{componente.precio | number:'1.2-2'}}€</td>
-    </tr>
+  <tr *ngFor="let componente of componentes">
+    <td>{{componente.id}}</td>
+    <td>{{componente.nombre}}</td>
+    <td>{{componente.precio | number:'1.2-2'}}€</td>
+  </tr>
   </tbody>
 </table>
