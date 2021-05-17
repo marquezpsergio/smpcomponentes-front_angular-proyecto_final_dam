@@ -19,4 +19,10 @@ export class CategoriaService {
       map(response => response as Categoria[])
     );
   }
+
+  getCategoriaById(id): Observable<Categoria> {
+    return this.http.get<Categoria>(`${this.urlEndPoint}/${id}`).pipe(
+      map(response => response as Categoria)
+    );
+  }
 }

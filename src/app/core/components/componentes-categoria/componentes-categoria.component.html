@@ -1,4 +1,4 @@
-<h1>TODOS LOS COMPONENTES</h1>
+<h1>Categoría: {{categoria.nombre}}</h1>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -12,7 +12,7 @@
     <tr *ngFor="let componente of componentes">
       <td>{{componente.id}}</td>
       <td>{{componente.nombre}}</td>
-      <td>{{componente.precio  | number:'1.2-2'}}€</td>
+      <td>{{componente.precio | number:'1.2-2'}}€</td>
     </tr>
   </tbody>
 </table>

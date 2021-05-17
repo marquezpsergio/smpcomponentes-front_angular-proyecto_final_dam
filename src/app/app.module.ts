@@ -9,9 +9,9 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { ConfiguratorComponent } from './core/components/configurator/configurator.component';
 import { HomeComponent } from './core/components/home/home.component';
 import { ComponentesComponent } from './core/components/componentes/componentes.component';
+import { ComponentesCategoriaComponent } from './core/components/componentes-categoria/componentes-categoria.component';
 // Services
 import { ComponenteService } from './core/services/componente.service';
-import { ComponentesCategoriaComponent } from './core/components/componentes-categoria/componentes-categoria.component';
 import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'configurador', component: ConfiguratorComponent },
   { path: 'componentes', component: ComponentesComponent },
+  { path: 'componentes/categoria/:id', component: ComponentesCategoriaComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 @NgModule({
