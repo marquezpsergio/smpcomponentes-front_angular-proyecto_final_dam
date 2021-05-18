@@ -19,4 +19,10 @@ export class FabricanteService {
       map(response => response as Fabricante[])
     );
   }
+
+  getFabricanteById(id): Observable<Fabricante> {
+    return this.http.get<Fabricante>(`${this.urlEndPoint}/${id}`).pipe(
+      map(response => response as Fabricante)
+    );
+  }
 }

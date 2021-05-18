@@ -1,3 +1,6 @@
+import {Categoria} from './categoria';
+import {Fabricante} from './fabricante';
+
 export class Componente {
   id: number;
   nombre: string;
@@ -5,6 +8,6 @@ export class Componente {
   unidadesDisponibles: number;
   imagen: string;
   url: string;
-  categoriaId: number;
-  fabricanteId: number;
+  categoria: Categoria;
+  fabricante: Fabricante;
 }

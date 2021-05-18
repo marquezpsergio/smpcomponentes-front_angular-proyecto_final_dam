@@ -1,6 +1,9 @@
+import {Componente} from './componente';
+import {Ordenador} from './ordenador';
+
 export class LineaOrdenador {
   id: number;
   precioVenta: number;
-  componenteId: number;
-  ordenadorId: number;
+  componente: Componente;
+  ordenador: Ordenador;
 }
