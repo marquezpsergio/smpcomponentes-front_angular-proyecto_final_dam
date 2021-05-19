@@ -1,4 +1,4 @@
-<h3 *ngIf="categoria">Componentes de la categoría '{{categoria.nombre}}'</h3>
+<h3 *ngIf="fabricante">Componentes del fabricante '{{fabricante.nombre}}'</h3>
 
 <div *ngIf="!componentes" class="alert alert-info">Cargando...</div>
 
@@ -17,15 +17,14 @@
       <div class="card-body">
         <h5 class="card-title">{{componente.nombre}}</h5>
         <hr>
-        <p class="card-text">Fabricante: <a
-          [routerLink]="['/componentes/fabricante', componente.fabricante.id]">{{componente.fabricante.nombre}}</a>
+        <p class="card-text">Categoría: <a
+          [routerLink]="['/componentes/categoria', componente.categoria.id]">{{componente.categoria.nombre}}</a>
         </p>
       </div>
       <div class="card-footer">
         <p class="card-text text-center p-1">
-          <a class="btn btn-primary text-white" href="{{componente.url}}" target="_blank"><i aria-hidden="true"
-                                                                                             class="fa fa-info-circle"></i> Más
-            información</a>
+          <a class="btn btn-primary text-white" href="{{componente.url}}" target="_blank">
+            <i aria-hidden="true" class="fa fa-info-circle"></i> Más información</a>
         </p>
       </div>
     </div>

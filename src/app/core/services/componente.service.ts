@@ -11,6 +11,7 @@ export class ComponenteService {
 
   private urlEndPoint = 'http://localhost:8080/api/componentes';
   private urlEndPointCategoria = 'http://localhost:8080/api/componentes/categoria';
+  private urlEndPointFabricante = 'http://localhost:8080/api/componentes/fabricante';
 
   constructor(private http: HttpClient) {
   }
@@ -23,6 +24,12 @@ export class ComponenteService {
 
   getComponentesByCategoria(id): Observable<Componente[]> {
     return this.http.get<Componente[]>(`${this.urlEndPointCategoria}/${id}`).pipe(
+      map(response => response as Componente[])
+    );
+  }
+
+  getComponentesByFabricante(id): Observable<Componente[]> {
+    return this.http.get<Componente[]>(`${this.urlEndPointFabricante}/${id}`).pipe(
       map(response => response as Componente[])
     );
   }

@@ -10,6 +10,7 @@ import {ConfiguratorComponent} from './core/components/configurator/configurator
 import {HomeComponent} from './core/components/home/home.component';
 import {ComponentesComponent} from './core/components/componentes/componentes.component';
 import {ComponentesCategoriaComponent} from './core/components/componentes-categoria/componentes-categoria.component';
+import {ComponentesFabricanteComponent} from './core/components/componentes-fabricante/componentes-fabricante.component';
 // Services
 import {ComponenteService} from './core/services/componente.service';
 import {FormsModule} from '@angular/forms';
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'configurador', component: ConfiguratorComponent},
   {path: 'componentes', component: ComponentesComponent},
   {path: 'componentes/categoria/:id', component: ComponentesCategoriaComponent},
+  {path: 'componentes/fabricante/:id', component: ComponentesFabricanteComponent},
   {path: '**', pathMatch: 'full', redirectTo: ''}
 ];
 
@@ -31,7 +33,8 @@ const routes: Routes = [
     ConfiguratorComponent,
     HomeComponent,
     ComponentesComponent,
-    ComponentesCategoriaComponent
+    ComponentesCategoriaComponent,
+    ComponentesFabricanteComponent
   ],
   imports: [
     BrowserModule,

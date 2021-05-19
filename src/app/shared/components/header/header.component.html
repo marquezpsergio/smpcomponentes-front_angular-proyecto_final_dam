@@ -11,16 +11,31 @@
         <li class="nav-item">
           <a [routerLink]="['/configurador']" class="nav-link" routerLinkActive="active">Configura tu PC!</a>
         </li>
+        <li class="nav-item">
+          <a [routerLink]="['/componentes']" class="nav-link" routerLinkActive="active">Componentes</a>
+        </li>
         <li class="nav-item dropdown">
-          <a [routerLink]="['/componentes']" aria-expanded="false" class="nav-link dropdown-toggle"
+          <a href="" aria-expanded="false" class="nav-link dropdown-toggle"
              data-bs-toggle="dropdown"
              id="navbarDropdown" role="button" routerLinkActive="active">
-            Componentes
+            Categorías
           </a>
           <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
             <li *ngFor="let categoria of categorias"><a [routerLink]="['/componentes/categoria', categoria.id]"
                                                         class="dropdown-item"
                                                         routerLinkActive="active">{{categoria.nombre}}</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="" aria-expanded="false" class="nav-link dropdown-toggle"
+             data-bs-toggle="dropdown"
+             id="navbarDropdown" role="button" routerLinkActive="active">
+            Fabricantes
+          </a>
+          <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
+            <li *ngFor="let fabricante of fabricantes"><a [routerLink]="['/componentes/fabricante', fabricante.id]"
+                                                          class="dropdown-item"
+                                                          routerLinkActive="active">{{fabricante.nombre}}</a></li>
           </ul>
         </li>
       </ul>
