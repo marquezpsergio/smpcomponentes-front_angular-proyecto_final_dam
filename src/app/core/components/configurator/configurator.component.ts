@@ -80,43 +80,43 @@ export class ConfiguratorComponent implements OnInit {
   public createOrdenador(): void {
     this.ordenadorService.create(this.ordenador).subscribe(
       ordenador => {
-        this.createLineaOrdenador(ordenador.id);
+        this.createLineaOrdenador(ordenador);
       }
     );
   }
 
-  public createLineaOrdenador(ordenadorCreadoId: number): void {
-    this.placaBaseLinea.ordenadorId = ordenadorCreadoId;
+  public createLineaOrdenador(ordenadorCreado: Ordenador): void {
+    this.placaBaseLinea.ordenador = ordenadorCreado;
     this.lineaOrdenadorService.create(this.placaBaseLinea).subscribe();
 
-    this.procesadorLinea.ordenadorId = ordenadorCreadoId;
+    this.procesadorLinea.ordenador = ordenadorCreado;
     this.lineaOrdenadorService.create(this.procesadorLinea).subscribe();
 
-    this.discoDuroLinea.ordenadorId = ordenadorCreadoId;
+    this.discoDuroLinea.ordenador = ordenadorCreado;
     this.lineaOrdenadorService.create(this.discoDuroLinea).subscribe();
 
-    this.discoDuroSSDLinea.ordenadorId = ordenadorCreadoId;
+    this.discoDuroSSDLinea.ordenador = ordenadorCreado;
     this.lineaOrdenadorService.create(this.discoDuroSSDLinea).subscribe();
 
-    this.tarjetaGraficaLinea.ordenadorId = ordenadorCreadoId;
+    this.tarjetaGraficaLinea.ordenador = ordenadorCreado;
     this.lineaOrdenadorService.create(this.tarjetaGraficaLinea).subscribe();
 
-    this.memoriaRamLinea.ordenadorId = ordenadorCreadoId;
+    this.memoriaRamLinea.ordenador = ordenadorCreado;
     this.lineaOrdenadorService.create(this.memoriaRamLinea).subscribe();
 
-    this.grabadoraDVDLinea.ordenadorId = ordenadorCreadoId;
+    this.grabadoraDVDLinea.ordenador = ordenadorCreado;
     this.lineaOrdenadorService.create(this.grabadoraDVDLinea).subscribe();
 
-    this.tarjetaSonidoLinea.ordenadorId = ordenadorCreadoId;
+    this.tarjetaSonidoLinea.ordenador = ordenadorCreado;
     this.lineaOrdenadorService.create(this.tarjetaSonidoLinea).subscribe();
 
-    this.cajaTorreLinea.ordenadorId = ordenadorCreadoId;
+    this.cajaTorreLinea.ordenador = ordenadorCreado;
     this.lineaOrdenadorService.create(this.cajaTorreLinea).subscribe();
 
-    this.ventilacionLinea.ordenadorId = ordenadorCreadoId;
+    this.ventilacionLinea.ordenador = ordenadorCreado;
     this.lineaOrdenadorService.create(this.ventilacionLinea).subscribe();
 
-    this.fuenteAlimLinea.ordenadorId = ordenadorCreadoId;
+    this.fuenteAlimLinea.ordenador = ordenadorCreado;
     this.lineaOrdenadorService.create(this.fuenteAlimLinea).subscribe();
   }
 

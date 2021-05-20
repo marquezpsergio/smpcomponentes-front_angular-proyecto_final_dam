@@ -9,7 +9,7 @@
           Placa Base:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="placaBaseLinea.componenteId" id="placaBase" name="placaBase" required>
+          <select [(ngModel)]="placaBaseLinea.componente" id="placaBase" name="placaBase" required>
             <option hidden selected value="undefined">Seleccione una placa base</option>
             <option *ngFor="let item of placaBaseComps" value="{{item.id}}">
               {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
@@ -23,7 +23,7 @@
           Procesador:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="procesadorLinea.componenteId" id="procesador" name="procesador" required>
+          <select [(ngModel)]="procesadorLinea.componente" id="procesador" name="procesador" required>
             <option hidden selected value="undefined">Selecciona un procesador</option>
             <option *ngFor="let item of procesadorComps" value="{{item.id}}">
               {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
@@ -37,7 +37,7 @@
           Tarjeta Gráfica:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="tarjetaGraficaLinea.componenteId" id="tarjetaGrafica" name="tarjetaGrafica" required>
+          <select [(ngModel)]="tarjetaGraficaLinea.componente" id="tarjetaGrafica" name="tarjetaGrafica" required>
             <option hidden selected value="undefined">Selecciona una tarjeta gráfica</option>
             <option *ngFor="let item of tarjetaGraficaComps" value="{{item.id}}">
               {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
@@ -51,7 +51,7 @@
           Memoria RAM:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="memoriaRamLinea.componenteId" id="memoriaRam" name="memoriaRam" required>
+          <select [(ngModel)]="memoriaRamLinea.componente" id="memoriaRam" name="memoriaRam" required>
             <option hidden selected value="undefined">Selecciona una memoria RAM</option>
             <option *ngFor="let item of memoriaRamComps" value="{{item.id}}">
               {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
@@ -65,7 +65,7 @@
           Fuente de alimentación:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="fuenteAlimLinea.componenteId" id="fuenteAlim" name="fuenteAlim" required>
+          <select [(ngModel)]="fuenteAlimLinea.componente" id="fuenteAlim" name="fuenteAlim" required>
             <option hidden selected value="undefined">Selecciona una fuente de alimentación</option>
             <option *ngFor="let item of fuenteAlimComps" value="{{item.id}}">
               {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
@@ -79,7 +79,7 @@
           Disco Duro:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="discoDuroLinea.componenteId" id="discoDuro" name="discoDuro" required>
+          <select [(ngModel)]="discoDuroLinea.componente" id="discoDuro" name="discoDuro" required>
             <option hidden selected value="undefined">Selecciona un disco duro</option>
             <option *ngFor="let item of discoDuroComps" value="{{item.id}}">
               {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
@@ -93,7 +93,7 @@
           Disco Duro SSD:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="discoDuroSSDLinea.componenteId" id="discoDuroSSD" name="discoDuroSSD" required>
+          <select [(ngModel)]="discoDuroSSDLinea.componente" id="discoDuroSSD" name="discoDuroSSD" required>
             <option hidden selected value="undefined">Selecciona un disco duro SSD</option>
             <option *ngFor="let item of discoDuroSSDComps" value="{{item.id}}">
               {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
@@ -107,7 +107,7 @@
           Caja/Torre:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="cajaTorreLinea.componenteId" id="cajaTorre" name="cajaTorre" required>
+          <select [(ngModel)]="cajaTorreLinea.componente" id="cajaTorre" name="cajaTorre" required>
             <option hidden selected value="undefined">Selecciona una caja o torre</option>
             <option *ngFor="let item of cajaTorreComps" value="{{item.id}}">
               {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
@@ -121,7 +121,7 @@
           Ventilación:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="ventilacionLinea.componenteId" id="ventilacion" name="ventilacion">
+          <select [(ngModel)]="ventilacionLinea.componente" id="ventilacion" name="ventilacion">
             <option hidden selected value="undefined">Selecciona la ventilación:</option>
             <option *ngFor="let item of ventilacionComps" value="{{item.id}}">
               {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
@@ -136,7 +136,7 @@
           Tarjeta de sonido:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="tarjetaSonidoLinea.componenteId" id="tarjetaSonido" name="tarjetaSonido">
+          <select [(ngModel)]="tarjetaSonidoLinea.componente" id="tarjetaSonido" name="tarjetaSonido">
             <option hidden selected value="undefined">Selecciona una tarjeta de sonido</option>
             <option *ngFor="let item of tarjetaSonidoComps" value="{{item.id}}">
               {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
@@ -150,7 +150,7 @@
           Grabadora DVD/Bluray:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="grabadoraDVDLinea.componenteId" id="grabadoraDVD" name="grabadoraDVD">
+          <select [(ngModel)]="grabadoraDVDLinea.componente" id="grabadoraDVD" name="grabadoraDVD">
             <option hidden selected value="undefined">Selecciona una grabadora DVD/BluRay</option>
             <option *ngFor="let item of grabadoraDVDComps" value="{{item.id}}">
               {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
