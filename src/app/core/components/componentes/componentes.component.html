@@ -4,7 +4,7 @@
 
 <div *ngIf="componentes?.length == 0" class="alert alert-danger">No existen componentes en la base de datos.</div>
 
-<div *ngIf="componentes && componentes.length > 0" class="row row-cols-2 row-cols-md-4 g-4">
+<div *ngIf="componentes && componentes.length > 0" class="row row-cols-2 row-cols-md-5 g-4">
   <div *ngFor="let componente of componentes" class="col">
     <div class="card h-100">
       <p class="card-text text-end p-2">
@@ -12,8 +12,7 @@
           {{componente.precio | number:'1.2-2'}}€
         </span>
       </p>
-      <img alt="Imagen {{componente.nombre}}" class="card-img-top" height="250px" src="{{componente.imagen}}"
-           width="200px">
+      <img alt="Imagen {{componente.nombre}}" class="card-img-top" height="200px" src="{{componente.imagen}}">
       <div class="card-body">
         <h5 class="card-title">{{componente.nombre}}</h5>
         <hr>
@@ -26,9 +25,8 @@
       </div>
       <div class="card-footer">
         <p class="card-text text-center p-1">
-          <a class="btn btn-primary text-white" href="{{componente.url}}" target="_blank"><i aria-hidden="true"
-                                                                                             class="fa fa-info-circle"></i> Más
-            información</a>
+          <a class="btn btn-primary text-white" href="{{componente.url}}" target="_blank">
+            <i aria-hidden="true" class="fa fa-info-circle"></i> Más información</a>
         </p>
       </div>
     </div>
