@@ -19,6 +19,8 @@ export class FormComponent implements OnInit {
   categorias: Categoria[];
   fabricantes: Fabricante[];
 
+  errores: string[];
+
   constructor(private categoriaService: CategoriaService,
               private fabricanteService: FabricanteService,
               private componenteService: ComponenteService,
@@ -46,7 +48,11 @@ export class FormComponent implements OnInit {
           componente => this.componente = componente
         );
       }
-    });
+      },
+      err => {
+        this.errores = err.error.errors as string[];
+      }
+    );
   }
 
   public create(): void {
@@ -54,6 +60,9 @@ export class FormComponent implements OnInit {
       () => {
         this.router.navigate(['/componentes']);
         swal.fire('Nuevo ordenador', 'Ordenador creado con éxito', 'success');
+      },
+      err => {
+        this.errores = err.error.errors as string[];
       }
     );
   }
@@ -63,6 +72,9 @@ export class FormComponent implements OnInit {
       componente => {
         this.router.navigate(['/componentes']);
         swal.fire('Componnete Actualizado', `Componente ${componente.nombre} actualizado con éxito!`, 'success');
+      },
+      err => {
+        this.errores = err.error.errors as string[];
       }
     );
   }

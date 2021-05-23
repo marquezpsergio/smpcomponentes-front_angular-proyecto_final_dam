@@ -1,3 +1,9 @@
+<ul *ngIf="errores?.length > 0" class="alert alert-danger">
+  <li *ngFor="let err of errores">
+    {{err}}
+  </li>
+</ul>
+
 <div class="card bg-dark text-white mt-3 mb-5">
   <div class="card-header">
     <h3>{{titulo}}</h3>
@@ -92,8 +98,7 @@
         </label>
         <div class="col-sm-6">
           <input #fuenteAlim="ngModel" [(ngModel)]="fuenteAlimLinea.componente" class="form-control" id="fuenteAlim"
-                 list="list_fuenteAlim" name="fuenteAlim" placeholder="Seleccione una fuente de alimentación"
-                 required>
+                 list="list_fuenteAlim" name="fuenteAlim" placeholder="Seleccione una fuente de alimentación" required>
           <datalist id="list_fuenteAlim">
             <option *ngFor="let item of fuenteAlimComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
               number:'1.2-2'}}€

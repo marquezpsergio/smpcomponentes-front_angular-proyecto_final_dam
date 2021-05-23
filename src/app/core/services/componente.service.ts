@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Componente} from '../../shared/models/componente';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
+import swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,8 @@ export class ComponenteService {
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
   getComponentes(): Observable<Componente[]> {
@@ -25,7 +28,16 @@ export class ComponenteService {
   }
 
   getComponente(id): Observable<Componente> {
-    return this.http.get<Componente>(`${this.urlEndPoint}/${id}`);
+    return this.http.get<Componente>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(e => {
+        if (e.status === 400) {
+          return throwError(e);
+        }
+        this.router.navigate(['/componentes']);
+        swal.fire('ERROR!', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
   }
 
   getComponentesByCategoria(id): Observable<Componente[]> {
@@ -41,14 +53,38 @@ export class ComponenteService {
   }
 
   create(componente: Componente): Observable<Componente> {
-    return this.http.post<Componente>(this.urlEndPoint, componente, {headers: this.httpHeaders});
+    return this.http.post<Componente>(this.urlEndPoint, componente, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        if (e.status === 400) {
+          return throwError(e);
+        }
+        swal.fire('Error al crear el componente!', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
   }
 
   update(componente: Componente): Observable<Componente> {
-    return this.http.put<Componente>(`${this.urlEndPoint}/${componente.id}`, componente, {headers: this.httpHeaders});
+    return this.http.put<Componente>(`${this.urlEndPoint}/${componente.id}`, componente, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        if (e.status === 400) {
+          return throwError(e);
+        }
+        swal.fire('Error al editar el componente!', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
   }
 
   delete(id: number): Observable<Componente> {
-    return this.http.delete<Componente>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders});
+    return this.http.delete<Componente>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        if (e.status === 400) {
+          return throwError(e);
+        }
+        swal.fire('Error al eliminar el componente!', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
   }
 }

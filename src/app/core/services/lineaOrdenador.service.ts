@@ -1,8 +1,9 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 import {LineaOrdenador} from '../../shared/models/lineaOrdenador';
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,14 @@ export class LineaOrdenadorService {
   }
 
   create(lineaOrdenador: LineaOrdenador): Observable<LineaOrdenador> {
-    return this.http.post<LineaOrdenador>(this.urlEndPoint, lineaOrdenador, {headers: this.httpHeaders});
+    return this.http.post<LineaOrdenador>(this.urlEndPoint, lineaOrdenador, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        if (e.status === 400) {
+          return throwError(e);
+        }
+        swal.fire('ERROR!', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
   }
 }
