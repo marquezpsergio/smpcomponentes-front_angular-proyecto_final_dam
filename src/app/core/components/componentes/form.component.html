@@ -1,0 +1,136 @@
+<div *ngIf="!categorias || !fabricantes" class="alert alert-info">Cargando formulario...</div>
+
+
+<div class="card bg-dark text-white" *ngIf="categorias && fabricantes">
+  <div class="card-header">{{titulo}}</div>
+  <div class="card-body">
+    <form #componenteForm="ngForm">
+      <div class="form-group row my-1">
+        <label for="categoria" class="col-form-label col-sm-2">Categoría</label>
+        <div class="col-sm-6">
+          <input list="list_categorias" [(ngModel)]="componente.categoria" name="categoria" id="categoria"
+                 class="form-control" required #categoria="ngModel">
+          <datalist id="list_categorias">
+            <option *ngFor="let cat of categorias" [ngValue]="cat.id">{{cat.nombre}}</option>
+          </datalist>
+          <div class="alert alert-danger" *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)">
+            <div *ngIf="categoria.errors.required">
+              La categoria es obligatoria.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row my-1">
+        <label for="fabricante" class="col-form-label col-sm-2">Fabricante</label>
+        <div class="col-sm-6">
+          <input list="list_fabricantes" [(ngModel)]="componente.fabricante" name="fabricante" id="fabricante"
+                 class="form-control" required #fabricante="ngModel">
+          <datalist id="list_fabricantes">
+            <option *ngFor="let fab of fabricantes" [ngValue]="fab.id">{{fab.nombre}}</option>
+          </datalist>
+          <div class="alert alert-danger" *ngIf="fabricante.invalid && (fabricante.dirty || fabricante.touched)">
+            <div *ngIf="fabricante.errors.required">
+              El fabricante es obligatorio.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row my-1">
+        <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+        <div class="col-sm-6">
+          <input type="text" [(ngModel)]="componente.nombre" name="nombre" id="nombre" class="form-control" required
+                 minlength="5" #nombre="ngModel">
+          <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <div *ngIf="nombre.errors.required">
+              El nombre es obligatorio.
+            </div>
+            <div *ngIf="nombre.errors.required">
+              El nombre debe tener al menos 5 caracteres.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row my-1">
+        <label for="precio" class="col-form-label col-sm-2">Precio</label>
+        <div class="col-sm-6">
+          <input type="number" [(ngModel)]="componente.precio" name="precio" id="precio" class="form-control" required
+                 #precio="ngModel" min="0" max="99999" step="any">
+        </div>
+        <div class="alert alert-danger" *ngIf="precio.invalid && (precio.dirty || precio.touched)">
+          <div *ngIf="precio.errors.required">
+            El precio es obligatorio.
+          </div>
+          <div *ngIf="precio.errors.min">
+            El precio mínimo es 0.
+          </div>
+          <div *ngIf="precio.errors.max">
+            El precio mínimo es 99999.
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group row my-1">
+        <label for="unidadesDisponibles" class="col-form-label col-sm-2">Unidades disponibles</label>
+        <div class="col-sm-6">
+          <input type="number" [(ngModel)]="componente.unidadesDisponibles" name="unidadesDisponibles"
+                 id="unidadesDisponibles" class="form-control" min="0" max="99999" value="0"
+                 #unidadesDisponibles="ngModel">
+          <div class="alert alert-danger"
+               *ngIf="unidadesDisponibles.invalid && (unidadesDisponibles.dirty || unidadesDisponibles.touched)">
+            <div *ngIf="unidadesDisponibles.errors.min">
+              El mínimo de unidades disponibles es 0.
+            </div>
+            <div *ngIf="unidadesDisponibles.errors.max">
+              El máximo de unidades disponibles es 99999.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row my-1">
+        <label for="imagen" class="col-form-label col-sm-2">Imagen</label>
+        <div class="col-sm-6">
+          <input type="text" [(ngModel)]="componente.imagen" name="imagen" id="imagen" class="form-control" required
+                 #imagen="ngModel">
+          <div class="alert alert-danger" *ngIf="imagen.invalid && (imagen.dirty || imagen.touched)">
+            <div *ngIf="imagen.errors.required">
+              La imagen es obligatoria.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row my-1">
+        <label for="url" class="col-form-label col-sm-2">Url</label>
+        <div class="col-sm-6">
+          <input type="text" [(ngModel)]="componente.url" name="url" id="url" class="form-control" required
+                 #url="ngModel">
+          <div class="alert alert-danger" *ngIf="url.invalid && (url.dirty || url.touched)">
+            <div *ngIf="url.errors.required">
+              La URL es obligatoria.
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group row my-1 pt-2">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!componente.id else elseBlock"
+                  [disabled]="!componenteForm.form.valid">Crear
+          </button>
+          <ng-template #elseBlock>
+            <button class="btn btn-primary" role="button" (click)='update()'
+                    [disabled]="!componenteForm.form.valid">Actualizar
+            </button>
+          </ng-template>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

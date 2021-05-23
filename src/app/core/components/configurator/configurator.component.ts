@@ -5,6 +5,7 @@ import {Ordenador} from '../../../shared/models/ordenador';
 import {LineaOrdenador} from '../../../shared/models/lineaOrdenador';
 import {Componente} from '../../../shared/models/componente';
 import {ComponenteService} from '../../services/componente.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-configurator',
@@ -73,50 +74,58 @@ export class ConfiguratorComponent implements OnInit {
       componentes => this.fuenteAlimComps = componentes);
   }
 
-  public checkForm(): void {
-    const formValido = false;
-  }
-
-  public createOrdenador(): void {
+  public create(): void {
     this.ordenadorService.create(this.ordenador).subscribe(
       ordenador => {
         this.createLineaOrdenador(ordenador);
+        swal.fire('Nuevo ordenador', 'Ordenador creado con éxito', 'success');
       }
     );
   }
 
   public createLineaOrdenador(ordenadorCreado: Ordenador): void {
     this.placaBaseLinea.ordenador = ordenadorCreado;
+    this.placaBaseLinea.precioVenta = this.placaBaseComps.find(comp => comp.id === this.placaBaseLinea.componente.id).precio;
     this.lineaOrdenadorService.create(this.placaBaseLinea).subscribe();
 
     this.procesadorLinea.ordenador = ordenadorCreado;
+    this.procesadorLinea.precioVenta = this.procesadorComps.find(comp => comp.id === this.procesadorLinea.componente.id).precio;
     this.lineaOrdenadorService.create(this.procesadorLinea).subscribe();
 
     this.discoDuroLinea.ordenador = ordenadorCreado;
+    this.discoDuroLinea.precioVenta = this.discoDuroComps.find(comp => comp.id === this.discoDuroLinea.componente.id).precio;
     this.lineaOrdenadorService.create(this.discoDuroLinea).subscribe();
 
     this.discoDuroSSDLinea.ordenador = ordenadorCreado;
+    this.discoDuroSSDLinea.precioVenta = this.discoDuroSSDComps.find(comp => comp.id === this.discoDuroSSDLinea.componente.id).precio;
     this.lineaOrdenadorService.create(this.discoDuroSSDLinea).subscribe();
 
     this.tarjetaGraficaLinea.ordenador = ordenadorCreado;
+    this.tarjetaGraficaLinea.precioVenta = this.tarjetaGraficaComps.find(comp => comp.id === this.tarjetaGraficaLinea.componente.id).precio;
     this.lineaOrdenadorService.create(this.tarjetaGraficaLinea).subscribe();
 
     this.memoriaRamLinea.ordenador = ordenadorCreado;
+    this.memoriaRamLinea.precioVenta = this.memoriaRamComps.find(comp => comp.id === this.memoriaRamLinea.componente.id).precio;
     this.lineaOrdenadorService.create(this.memoriaRamLinea).subscribe();
 
     this.grabadoraDVDLinea.ordenador = ordenadorCreado;
+    this.grabadoraDVDLinea.precioVenta = this.grabadoraDVDComps.find(comp => comp.id === this.grabadoraDVDLinea.componente.id).precio;
     this.lineaOrdenadorService.create(this.grabadoraDVDLinea).subscribe();
 
     this.tarjetaSonidoLinea.ordenador = ordenadorCreado;
+    this.tarjetaSonidoLinea.precioVenta = this.tarjetaSonidoComps.find(comp => comp.id === this.tarjetaSonidoLinea.componente.id).precio;
     this.lineaOrdenadorService.create(this.tarjetaSonidoLinea).subscribe();
 
     this.cajaTorreLinea.ordenador = ordenadorCreado;
+    this.cajaTorreLinea.precioVenta = this.cajaTorreComps.find(comp => comp.id === this.cajaTorreLinea.componente.id).precio;
     this.lineaOrdenadorService.create(this.cajaTorreLinea).subscribe();
 
     this.ventilacionLinea.ordenador = ordenadorCreado;
+    this.ventilacionLinea.precioVenta = this.ventilacionComps.find(comp => comp.id === this.ventilacionLinea.componente.id).precio;
     this.lineaOrdenadorService.create(this.ventilacionLinea).subscribe();
 
     this.fuenteAlimLinea.ordenador = ordenadorCreado;
+    this.fuenteAlimLinea.precioVenta = this.fuenteAlimComps.find(comp => comp.id === this.fuenteAlimLinea.componente.id).precio;
     this.lineaOrdenadorService.create(this.fuenteAlimLinea).subscribe();
   }
 

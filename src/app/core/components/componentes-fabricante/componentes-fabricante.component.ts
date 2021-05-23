@@ -4,6 +4,7 @@ import {Fabricante} from '../../../shared/models/fabricante';
 import {FabricanteService} from '../../services/fabricante.service';
 import {ComponenteService} from 'app/core/services/componente.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-componentes-categoria',
@@ -30,6 +31,39 @@ export class ComponentesFabricanteComponent implements OnInit {
         );
         this.fabricanteService.getFabricanteById(id).subscribe(
           fabricante => this.fabricante = fabricante
+        );
+      }
+    });
+  }
+
+  delete(componente: Componente): void {
+    const swalWithBootstrapButtons = swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+      title: '¿Está seguro?',
+      text: `¿Está seguro de que desea eliminar el componente ${componente.nombre}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.componenteService.delete(componente.id).subscribe(
+          () => {
+            this.componentes = this.componentes.filter(comp => comp !== comp);
+            swalWithBootstrapButtons.fire(
+              'Componente Eliminado!',
+              `El componente ${componente.nombre} eliminado con éxito.`,
+              'success'
+            );
+          }
         );
       }
     });

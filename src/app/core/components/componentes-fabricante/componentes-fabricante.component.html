@@ -1,10 +1,16 @@
 <h3 *ngIf="fabricante">Componentes del fabricante '{{fabricante.nombre}}'</h3>
 
-<div *ngIf="!componentes" class="alert alert-info">Cargando...</div>
+<div *ngIf="!componentes" class="alert alert-info">Cargando componentes...</div>
+
+<div class="my-2 text-left">
+  <button type="button" class="btn btn-rounded btn-primary" [routerLink]="['/componentes/form']">Crear
+    Componente
+  </button>
+</div>
 
 <div *ngIf="componentes?.length == 0" class="alert alert-danger">No existen componentes en la base de datos.</div>
 
-<div *ngIf="componentes && componentes.length > 0" class="row row-cols-2 row-cols-md-5 g-4">
+<div *ngIf="componentes && componentes.length > 0" class="row row-cols-2 row-cols-md-6 g-4">
   <div *ngFor="let componente of componentes" class="col">
     <div class="card h-100">
       <p class="card-text text-end p-2">
@@ -12,7 +18,7 @@
           {{componente.precio | number:'1.2-2'}}€
         </span>
       </p>
-      <img alt="Imagen {{componente.nombre}}" class="card-img-top" height="200px" src="{{componente.imagen}}">
+      <img alt="Imagen {{componente.nombre}}" class="card-img-top" src="{{componente.imagen}}">
       <div class="card-body">
         <h5 class="card-title">{{componente.nombre}}</h5>
         <hr>
@@ -25,6 +31,19 @@
           <a class="btn btn-primary text-white" href="{{componente.url}}" target="_blank">
             <i aria-hidden="true" class="fa fa-info-circle"></i> Más información</a>
         </p>
+        <div class="row text-center">
+          <hr>
+          <div class="col-6">
+            <button type="button" name="editar" class="btn btn-primary w-100"
+                    [routerLink]="['/componentes/form', componente.id]">Editar
+            </button>
+          </div>
+          <div class="col-6">
+            <button type="button" name="eliminar" class="btn btn-danger w-100"
+                    (click)="delete(componente.id)">Eliminar
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

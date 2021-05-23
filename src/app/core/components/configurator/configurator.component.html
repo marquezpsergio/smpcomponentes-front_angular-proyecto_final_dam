@@ -1,167 +1,213 @@
-<h3>¡Configura tu PC!</h3>
-
-<div class="card mt-3 mb-5">
-  <div class="card-header bg-dark text-white">{{titulo}}</div>
+<div class="card bg-dark text-white mt-3 mb-5">
+  <div class="card-header">
+    <h3>{{titulo}}</h3>
+  </div>
   <div class="card-body">
-    <form (ngSubmit)="checkForm()">
-      <div class="form-group row">
+    <form #configuratorForm="ngForm">
+      <div class="form-group row my-1">
         <label class="col-form-label col-lg-2" for="placaBase">
           Placa Base:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="placaBaseLinea.componente.id" id="placaBase" name="placaBase" required>
-            <option hidden selected value="undefined">Seleccione una placa base</option>
-            <option *ngFor="let item of placaBaseComps" value="{{item.id}}">
-              {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
+          <input #placaBase="ngModel" [(ngModel)]="placaBaseLinea.componente" class="form-control" id="placaBase"
+                 list="list_placaBase" name="placaBase" placeholder="Seleccione una placa base" required>
+          <datalist id="list_placaBase">
+            <option *ngFor="let item of placaBaseComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
+              number:'1.2-2'}}€
             </option>
-          </select>
+          </datalist>
+          <div *ngIf="placaBase.invalid && (placaBase.dirty || placaBase.touched)" class="alert alert-danger">
+            <div *ngIf="placaBase.errors.required">
+              Debe indicar la placa base.
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row my-1">
         <label class="col-form-label col-lg-2" for="procesador">
           Procesador:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="procesadorLinea.componente.id" id="procesador" name="procesador" required>
-            <option hidden selected value="undefined">Selecciona un procesador</option>
-            <option *ngFor="let item of procesadorComps" value="{{item.id}}">
-              {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
+          <input #procesador="ngModel" [(ngModel)]="procesadorLinea.componente" class="form-control" id="procesador"
+                 list="list_procesador" name="procesador" placeholder="Seleccione un procesador" required>
+          <datalist id="list_procesador">
+            <option *ngFor="let item of procesadorComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
+              number:'1.2-2'}}€
             </option>
-          </select>
+          </datalist>
+          <div *ngIf="procesador.invalid && (procesador.dirty || procesador.touched)" class="alert alert-danger">
+            <div *ngIf="procesador.errors.required">
+              Debe indicar el procesador.
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row my-1">
         <label class="col-form-label col-lg-2" for="tarjetaGrafica">
           Tarjeta Gráfica:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="tarjetaGraficaLinea.componente.id" id="tarjetaGrafica" name="tarjetaGrafica" required>
-            <option hidden selected value="undefined">Selecciona una tarjeta gráfica</option>
-            <option *ngFor="let item of tarjetaGraficaComps" value="{{item.id}}">
-              {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
+          <input #tarjetaGrafica="ngModel" [(ngModel)]="tarjetaGraficaLinea.componente" class="form-control"
+                 id="tarjetaGrafica" list="list_tarjetaGrafica" name="tarjetaGrafica"
+                 placeholder="Seleccione una tarjeta grafica" required>
+          <datalist id="list_tarjetaGrafica">
+            <option *ngFor="let item of tarjetaGraficaComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
+              number:'1.2-2'}}€
             </option>
-          </select>
+          </datalist>
+          <div *ngIf="tarjetaGrafica.invalid && (tarjetaGrafica.dirty || tarjetaGrafica.touched)"
+               class="alert alert-danger">
+            <div *ngIf="tarjetaGrafica.errors.required">
+              Debe indicar la tarjeta grafica.
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row my-1">
         <label class="col-form-label col-lg-2" for="memoriaRam">
           Memoria RAM:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="memoriaRamLinea.componente.id" id="memoriaRam" name="memoriaRam" required>
-            <option hidden selected value="undefined">Selecciona una memoria RAM</option>
-            <option *ngFor="let item of memoriaRamComps" value="{{item.id}}">
-              {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
+          <input #memoriaRam="ngModel" [(ngModel)]="memoriaRamLinea.componente" class="form-control" id="memoriaRam"
+                 list="list_memoriaRam" name="memoriaRam" placeholder="Seleccione una memoria RAM" required>
+          <datalist id="list_memoriaRam">
+            <option *ngFor="let item of memoriaRamComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
+              number:'1.2-2'}}€
             </option>
-          </select>
+          </datalist>
+          <div *ngIf="memoriaRam.invalid && (memoriaRam.dirty || memoriaRam.touched)" class="alert alert-danger">
+            <div *ngIf="memoriaRam.errors.required">
+              Debe indicar la memoria RAM.
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row my-1">
         <label class="col-form-label col-lg-2" for="fuenteAlim">
           Fuente de alimentación:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="fuenteAlimLinea.componente.id" id="fuenteAlim" name="fuenteAlim" required>
-            <option hidden selected value="undefined">Selecciona una fuente de alimentación</option>
-            <option *ngFor="let item of fuenteAlimComps" value="{{item.id}}">
-              {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
+          <input #fuenteAlim="ngModel" [(ngModel)]="fuenteAlimLinea.componente" class="form-control" id="fuenteAlim"
+                 list="list_fuenteAlim" name="fuenteAlim" placeholder="Seleccione una fuente de alimentación"
+                 required>
+          <datalist id="list_fuenteAlim">
+            <option *ngFor="let item of fuenteAlimComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
+              number:'1.2-2'}}€
             </option>
-          </select>
+          </datalist>
+          <div *ngIf="fuenteAlim.invalid && (fuenteAlim.dirty || fuenteAlim.touched)" class="alert alert-danger">
+            <div *ngIf="fuenteAlim.errors.required">
+              Debe indicar la fuente de alimentación.
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row my-1">
         <label class="col-form-label col-lg-2" for="discoDuro">
           Disco Duro:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="discoDuroLinea.componente.id" id="discoDuro" name="discoDuro" required>
-            <option hidden selected value="undefined">Selecciona un disco duro</option>
-            <option *ngFor="let item of discoDuroComps" value="{{item.id}}">
-              {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
+          <input [(ngModel)]="discoDuroLinea.componente" class="form-control" id="discoDuro" list="list_discoDuro"
+                 name="discoDuro" placeholder="Seleccione un disco duro">
+          <datalist id="list_discoDuro">
+            <option *ngFor="let item of discoDuroComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
+              number:'1.2-2'}}€
             </option>
-          </select>
+          </datalist>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row my-1">
         <label class="col-form-label col-lg-2" for="discoDuroSSD">
           Disco Duro SSD:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="discoDuroSSDLinea.componente.id" id="discoDuroSSD" name="discoDuroSSD" required>
-            <option hidden selected value="undefined">Selecciona un disco duro SSD</option>
-            <option *ngFor="let item of discoDuroSSDComps" value="{{item.id}}">
-              {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
+          <input [(ngModel)]="discoDuroSSDLinea.componente" class="form-control" id="discoDuroSSD"
+                 list="list_discoDuroSSD" name="discoDuroSSD" placeholder="Seleccione un disco duro SSD">
+          <datalist id="list_discoDuroSSD">
+            <option *ngFor="let item of discoDuroSSDComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
+              number:'1.2-2'}}€
             </option>
-          </select>
+          </datalist>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row my-1">
         <label class="col-form-label col-lg-2" for="cajaTorre">
           Caja/Torre:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="cajaTorreLinea.componente.id" id="cajaTorre" name="cajaTorre" required>
-            <option hidden selected value="undefined">Selecciona una caja o torre</option>
-            <option *ngFor="let item of cajaTorreComps" value="{{item.id}}">
-              {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
+          <input #cajaTorre="ngModel" [(ngModel)]="cajaTorreLinea.componente" class="form-control" id="cajaTorre"
+                 list="list_cajaTorre" name="cajaTorre" placeholder="Seleccione una caja o torre" required>
+          <datalist id="list_cajaTorre">
+            <option *ngFor="let item of cajaTorreComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
+              number:'1.2-2'}}€
             </option>
-          </select>
+          </datalist>
+          <div *ngIf="cajaTorre.invalid && (cajaTorre.dirty || cajaTorre.touched)" class="alert alert-danger">
+            <div *ngIf="cajaTorre.errors.required">
+              Debe indicar la caja o torre.
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row my-1">
         <label class="col-form-label col-lg-2" for="ventilacion">
           Ventilación:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="ventilacionLinea.componente.id" id="ventilacion" name="ventilacion">
-            <option hidden selected value="undefined">Selecciona la ventilación:</option>
-            <option *ngFor="let item of ventilacionComps" value="{{item.id}}">
-              {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
+          <input [(ngModel)]="ventilacionLinea.componente" class="form-control" id="ventilacion" list="list_ventilacion"
+                 name="ventilacion" placeholder="Seleccione ventilación">
+          <datalist id="list_ventilacion">
+            <option *ngFor="let item of ventilacionComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
+              number:'1.2-2'}}€
             </option>
-          </select>
+          </datalist>
         </div>
       </div>
 
 
-      <div class="form-group row">
+      <div class="form-group row my-1">
         <label class="col-form-label col-lg-2" for="tarjetaSonido">
           Tarjeta de sonido:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="tarjetaSonidoLinea.componente.id" id="tarjetaSonido" name="tarjetaSonido">
-            <option hidden selected value="undefined">Selecciona una tarjeta de sonido</option>
-            <option *ngFor="let item of tarjetaSonidoComps" value="{{item.id}}">
-              {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
+          <input [(ngModel)]="tarjetaSonidoLinea.componente" class="form-control" id="tarjetaSonido"
+                 list="list_tarjetaSonido" name="tarjetaSonido" placeholder="Seleccione una tarjeta de sonido">
+          <datalist id="list_tarjetaSonido">
+            <option *ngFor="let item of tarjetaSonidoComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
+              number:'1.2-2'}}€
             </option>
-          </select>
+          </datalist>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row my-1">
         <label class="col-form-label col-lg-2" for="grabadoraDVD">
           Grabadora DVD/Bluray:
         </label>
         <div class="col-sm-6">
-          <select [(ngModel)]="grabadoraDVDLinea.componente.id" id="grabadoraDVD" name="grabadoraDVD">
-            <option hidden selected value="undefined">Selecciona una grabadora DVD/BluRay</option>
-            <option *ngFor="let item of grabadoraDVDComps" value="{{item.id}}">
-              {{item.nombre}} --- {{item.precio | number:'1.2-2'}}€
+          <input [(ngModel)]="grabadoraDVDLinea.componente" class="form-control" id="grabadoraDVD"
+                 list="list_grabadoraDVD" name="grabadoraDVD" placeholder="Seleccione una grabadora DVD">
+          <datalist id="list_grabadoraDVD">
+            <option *ngFor="let item of grabadoraDVDComps" [ngValue]="item.id">{{item.nombre}} --- {{item.precio |
+              number:'1.2-2'}}€
             </option>
-          </select>
+          </datalist>
         </div>
       </div>
 
-      <div class="form-group row pt-2">
-        <div class="col-sm-6 text-center">
-          <button class="btn btn-primary" role="button">Crear Ordenador!</button>
+      <div class="form-group row my-1 pt-3 text-center">
+        <div class="col-sm-6 offset-lg-2">
+          <button (click)="create()" [disabled]="!configuratorForm.form.valid" class="btn btn-success w-100"
+                  role="button">Crear Ordenador!
+          </button>
         </div>
       </div>
 
