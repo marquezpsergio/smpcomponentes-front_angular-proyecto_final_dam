@@ -12,7 +12,7 @@ export class UsuarioService {
 
   private urlEndPoint = 'http://localhost:8080/api/usuarios';
 
-  private httpHeaders = new HttpHeaders({'Content-Type': 'application-json'});
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) {
   }

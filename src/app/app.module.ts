@@ -22,6 +22,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'configurador', component: ConfiguratorComponent},
   {path: 'componentes', component: ComponentesComponent},
+  {path: 'ordenadores', component: OrdenadoresComponent},
   {path: 'componentes/categoria/:id', component: ComponentesCategoriaComponent},
   {path: 'componentes/fabricante/:id', component: ComponentesFabricanteComponent},
   {path: 'componentes/form', component: FormComponent},

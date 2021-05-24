@@ -12,7 +12,7 @@ export class OrdenadorService {
 
   private urlEndPoint = 'http://localhost:8080/api/ordenadores';
 
-  private httpHeaders = new HttpHeaders({'Content-Type': 'application-json'});
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) {
   }

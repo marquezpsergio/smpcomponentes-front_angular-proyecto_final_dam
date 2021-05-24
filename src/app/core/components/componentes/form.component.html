@@ -13,10 +13,11 @@
       <div class="form-group row my-1">
         <label for="categoria" class="col-form-label col-sm-2">Categoría</label>
         <div class="col-sm-6">
+          <span *ngIf="componente.categoria != undefined">{{componente.categoria.nombre}}</span>
           <input list="list_categorias" [(ngModel)]="componente.categoria" name="categoria" id="categoria"
-                 class="form-control" #categoria="ngModel"> <!-- required  -->
+                 class="form-control" #categoria="ngModel" (change)="catChange($event.target.value)"> <!-- required  -->
           <datalist id="list_categorias">
-            <option *ngFor="let cat of categorias" [ngValue]="cat.id">{{cat.nombre}}</option>
+            <option *ngFor="let cat of categorias" [value]="cat.id">{{cat.nombre}}</option>
           </datalist>
           <div class="alert alert-danger" *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)">
             <div *ngIf="categoria.errors.required">
@@ -29,10 +30,12 @@
       <div class="form-group row my-1">
         <label for="fabricante" class="col-form-label col-sm-2">Fabricante</label>
         <div class="col-sm-6">
+          <span *ngIf="componente.fabricante != undefined">{{componente.fabricante.nombre}}</span>
           <input list="list_fabricantes" [(ngModel)]="componente.fabricante" name="fabricante" id="fabricante"
-                 class="form-control" #fabricante="ngModel"> <!-- required  -->
+                 class="form-control" #fabricante="ngModel" (change)="fabChange($event.target.value)">
+          <!-- required  -->
           <datalist id="list_fabricantes">
-            <option *ngFor="let fab of fabricantes" [ngValue]="fab.id">{{fab.nombre}}</option>
+            <option *ngFor="let fab of fabricantes" [value]="fab.id">{{fab.nombre}}</option>
           </datalist>
           <div class="alert alert-danger" *ngIf="fabricante.invalid && (fabricante.dirty || fabricante.touched)">
             <div *ngIf="fabricante.errors.required">

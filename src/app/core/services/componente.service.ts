@@ -58,6 +58,7 @@ export class ComponenteService {
         if (e.status === 400) {
           return throwError(e);
         }
+
         swal.fire('Error al crear el componente!', e.error.mensaje, 'error');
         return throwError(e);
       })

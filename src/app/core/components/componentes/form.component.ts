@@ -42,17 +42,29 @@ export class FormComponent implements OnInit {
 
   public cargarComponente(): void {
     this.activadedRoute.params.subscribe(params => {
-      const id = params.id;
-      if (id) {
-        this.componenteService.getComponente(id).subscribe(
-          componente => this.componente = componente
-        );
-      }
+        const id = params.id;
+        if (id) {
+          this.componenteService.getComponente(id).subscribe(
+            componente => this.componente = componente
+          );
+        }
       },
       err => {
         this.errores = err.error.errors as string[];
       }
     );
+  }
+
+  catChange(value: string): void {
+    if (value && value.length > 0) {
+      this.categoriaService.getCategoriaById(value).subscribe((cat: Categoria) => this.componente.categoria = cat);
+    }
+  }
+
+  fabChange(value: string): void {
+    if (value && value.length > 0) {
+      this.fabricanteService.getFabricanteById(value).subscribe((fab: Fabricante) => this.componente.fabricante = fab);
+    }
   }
 
   public create(): void {
