@@ -11,11 +11,10 @@
   <div class="card-body">
     <form #configuratorForm="ngForm">
       <div class="form-group row my-1">
-        <label class="col-form-label col-lg-2" for="placaBase">
+        <label class="col-form-label col-md-2" for="placaBase">
           Placa Base:
         </label>
-        <div class="col-sm-6">
-          <span *ngIf="placaBaseLinea.componente != undefined">{{placaBaseLinea.componente.nombre}}</span>
+        <div class="col-md-6">
           <input #placaBase="ngModel" [(ngModel)]="placaBaseLinea.componente" class="form-control" id="placaBase"
                  list="list_placaBase" name="placaBase" placeholder="Seleccione una placa base" required
                  (change)="placaBaseChange($event.target.value)">
@@ -30,14 +29,17 @@
             </div>
           </div>
         </div>
+        <div class="col-md-4 text-center text-sm-left ml-1">
+          <p *ngIf="placaBaseLinea.componente != undefined">{{ placaBaseLinea.componente.nombre }}
+            | <span class="badge bg-primary"> {{ placaBaseLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        </div>
       </div>
 
       <div class="form-group row my-1">
-        <label class="col-form-label col-lg-2" for="procesador">
+        <label class="col-form-label col-md-2" for="procesador">
           Procesador:
         </label>
-        <div class="col-sm-6">
-          <span *ngIf="procesadorLinea.componente != undefined">{{procesadorLinea.componente.nombre}}</span>
+        <div class="col-md-6">
           <input #procesador="ngModel" [(ngModel)]="procesadorLinea.componente" class="form-control" id="procesador"
                  list="list_procesador" name="procesador" placeholder="Seleccione un procesador" required
                  (change)="procesadorChange($event.target.value)">
@@ -52,14 +54,17 @@
             </div>
           </div>
         </div>
+        <div class="col-md-4 offset-sm-0 text-center text-sm-left ml-1">
+          <p *ngIf="procesadorLinea.componente != undefined">{{ procesadorLinea.componente.nombre }}
+            | <span class="badge bg-primary"> {{ procesadorLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        </div>
       </div>
 
       <div class="form-group row my-1">
-        <label class="col-form-label col-lg-2" for="tarjetaGrafica">
+        <label class="col-form-label col-md-2" for="tarjetaGrafica">
           Tarjeta Gráfica:
         </label>
-        <div class="col-sm-6">
-          <span *ngIf="tarjetaGraficaLinea.componente != undefined">{{tarjetaGraficaLinea.componente.nombre}}</span>
+        <div class="col-md-6">
           <input #tarjetaGrafica="ngModel" [(ngModel)]="tarjetaGraficaLinea.componente" class="form-control"
                  id="tarjetaGrafica" list="list_tarjetaGrafica" name="tarjetaGrafica"
                  placeholder="Seleccione una tarjeta grafica" required
@@ -76,14 +81,17 @@
             </div>
           </div>
         </div>
+        <div class="col-md-4 text-center text-sm-left ml-1">
+          <p *ngIf="tarjetaGraficaLinea.componente != undefined">{{ tarjetaGraficaLinea.componente.nombre }}
+            | <span class="badge bg-primary"> {{ tarjetaGraficaLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        </div>
       </div>
 
       <div class="form-group row my-1">
-        <label class="col-form-label col-lg-2" for="memoriaRam">
+        <label class="col-form-label col-md-2" for="memoriaRam">
           Memoria RAM:
         </label>
-        <div class="col-sm-6">
-          <span *ngIf="memoriaRamLinea.componente != undefined">{{memoriaRamLinea.componente.nombre}}</span>
+        <div class="col-md-6">
           <input #memoriaRam="ngModel" [(ngModel)]="memoriaRamLinea.componente" class="form-control" id="memoriaRam"
                  list="list_memoriaRam" name="memoriaRam" placeholder="Seleccione una memoria RAM" required
                  (change)="memoriaRAMChange($event.target.value)">
@@ -98,14 +106,17 @@
             </div>
           </div>
         </div>
+        <div class="col-md-4 text-center text-sm-left ml-1">
+          <p *ngIf="memoriaRamLinea.componente != undefined">{{ memoriaRamLinea.componente.nombre }}
+            | <span class="badge bg-primary"> {{ memoriaRamLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        </div>
       </div>
 
       <div class="form-group row my-1">
-        <label class="col-form-label col-lg-2" for="fuenteAlim">
+        <label class="col-form-label col-md-2" for="fuenteAlim">
           Fuente de alimentación:
         </label>
-        <div class="col-sm-6">
-          <span *ngIf="fuenteAlimLinea.componente != undefined">{{fuenteAlimLinea.componente.nombre}}</span>
+        <div class="col-md-6">
           <input #fuenteAlim="ngModel" [(ngModel)]="fuenteAlimLinea.componente" class="form-control" id="fuenteAlim"
                  list="list_fuenteAlim" name="fuenteAlim" placeholder="Seleccione una fuente de alimentación" required
                  (change)="fuenteAlimChange($event.target.value)">
@@ -120,14 +131,17 @@
             </div>
           </div>
         </div>
+        <div class="col-md-4 text-center text-sm-left ml-1">
+          <p *ngIf="fuenteAlimLinea.componente != undefined">{{ fuenteAlimLinea.componente.nombre }}
+            | <span class="badge bg-primary">{{ fuenteAlimLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        </div>
       </div>
 
       <div class="form-group row my-1">
-        <label class="col-form-label col-lg-2" for="discoDuro">
+        <label class="col-form-label col-md-2" for="discoDuro">
           Disco Duro:
         </label>
-        <div class="col-sm-6">
-          <span *ngIf="discoDuroLinea.componente != undefined">{{discoDuroLinea.componente.nombre}}</span>
+        <div class="col-md-6">
           <input [(ngModel)]="discoDuroLinea.componente" class="form-control" id="discoDuro" list="list_discoDuro"
                  name="discoDuro" placeholder="Seleccione un disco duro"
                  (change)="discoDuroChange($event.target.value)">
@@ -137,14 +151,17 @@
             </option>
           </datalist>
         </div>
+        <div class="col-md-4 text-center text-sm-left ml-1">
+          <p *ngIf="discoDuroLinea.componente != undefined">{{ discoDuroLinea.componente.nombre }}
+            | <span class="badge bg-primary"> {{ discoDuroLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        </div>
       </div>
 
       <div class="form-group row my-1">
-        <label class="col-form-label col-lg-2" for="cajaTorre">
+        <label class="col-form-label col-md-2" for="cajaTorre">
           Caja/Torre:
         </label>
-        <div class="col-sm-6">
-          <span *ngIf="cajaTorreLinea.componente != undefined">{{cajaTorreLinea.componente.nombre}}</span>
+        <div class="col-md-6">
           <input #cajaTorre="ngModel" [(ngModel)]="cajaTorreLinea.componente" class="form-control" id="cajaTorre"
                  list="list_cajaTorre" name="cajaTorre" placeholder="Seleccione una caja o torre" required
                  (change)="cajaTorreChange($event.target.value)">
@@ -159,14 +176,17 @@
             </div>
           </div>
         </div>
+        <div class="col-md-4 text-center text-sm-left ml-1">
+          <p *ngIf="cajaTorreLinea.componente != undefined">{{ cajaTorreLinea.componente.nombre }}
+            | <span class="badge bg-primary"> {{ cajaTorreLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        </div>
       </div>
 
       <div class="form-group row my-1">
-        <label class="col-form-label col-lg-2" for="ventilacion">
+        <label class="col-form-label col-md-2" for="ventilacion">
           Ventilación:
         </label>
-        <div class="col-sm-6">
-          <span *ngIf="ventilacionLinea.componente != undefined">{{ventilacionLinea.componente.nombre}}</span>
+        <div class="col-md-6">
           <input [(ngModel)]="ventilacionLinea.componente" class="form-control" id="ventilacion" list="list_ventilacion"
                  name="ventilacion" placeholder="Seleccione ventilación"
                  (change)="ventilacionChange($event.target.value)">
@@ -176,10 +196,20 @@
             </option>
           </datalist>
         </div>
+        <div class="col-md-4 text-center text-sm-left ml-1">
+          <p *ngIf="ventilacionLinea.componente != undefined">{{ ventilacionLinea.componente.nombre }}
+            | <span class="badge bg-primary"> {{ ventilacionLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        </div>
       </div>
 
+      <div class="form-group row my-1 pt-3 text-end">
+        <hr>
+        <div class="col-md-11">
+          <h5>PRECIO TOTAL: <span class="badge bg-danger">{{ordenador.precioTotal | number:'1.2-2'}}€</span></h5>
+        </div>
+      </div>
       <div class="form-group row my-1 pt-3 text-center">
-        <div class="col-sm-6 offset-lg-2">
+        <div class="col-md-6 offset-sm-2">
           <button (click)="create()" [disabled]="!configuratorForm.form.valid" class="btn btn-success w-100"
                   role="button">Crear Ordenador!
           </button>

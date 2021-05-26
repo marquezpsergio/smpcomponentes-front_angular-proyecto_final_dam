@@ -71,7 +71,7 @@ export class FormComponent implements OnInit {
     this.componenteService.create(this.componente).subscribe(
       () => {
         this.router.navigate(['/componentes']);
-        swal.fire('Nuevo ordenador', 'Ordenador creado con éxito', 'success');
+        swal.fire('Nuevo Componente', 'Componente creado con éxito', 'success');
       },
       err => {
         this.errores = err.error.errors as string[];
@@ -83,7 +83,7 @@ export class FormComponent implements OnInit {
     this.componenteService.update(this.componente).subscribe(
       componente => {
         this.router.navigate(['/componentes']);
-        swal.fire('Componnete Actualizado', `Componente ${componente.nombre} actualizado con éxito!`, 'success');
+        swal.fire('Componente Actualizado', `Componente ${componente.nombre} actualizado con éxito!`, 'success');
       },
       err => {
         this.errores = err.error.errors as string[];

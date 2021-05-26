@@ -33,7 +33,7 @@ export class ConfiguratorComponent implements OnInit {
   public cajaTorreLinea = new LineaOrdenador();
   public ventilacionLinea = new LineaOrdenador();
   public fuenteAlimLinea = new LineaOrdenador();
-  private ordenador: Ordenador = new Ordenador();
+  public ordenador: Ordenador = new Ordenador();
 
   errores: string[];
 
@@ -64,6 +64,15 @@ export class ConfiguratorComponent implements OnInit {
       componentes => this.ventilacionComps = componentes);
     this.componenteService.getComponentesByCategoria(11).subscribe(
       componentes => this.fuenteAlimComps = componentes);
+    this.ordenador.precioTotal = 0;
+    this.placaBaseLinea.precioVenta = 0;
+    this.procesadorLinea.precioVenta = 0;
+    this.discoDuroLinea.precioVenta = 0;
+    this.tarjetaGraficaLinea.precioVenta = 0;
+    this.memoriaRamLinea.precioVenta = 0;
+    this.cajaTorreLinea.precioVenta = 0;
+    this.ventilacionLinea.precioVenta = 0;
+    this.fuenteAlimLinea.precioVenta = 0;
   }
 
   placaBaseChange(value: string): void {
@@ -71,6 +80,7 @@ export class ConfiguratorComponent implements OnInit {
       this.componenteService.getComponente(value).subscribe((comp: Componente) => {
         this.placaBaseLinea.componente = comp;
         this.placaBaseLinea.precioVenta = comp.precio;
+        this.calcularPrecio();
       });
     }
   }
@@ -80,6 +90,7 @@ export class ConfiguratorComponent implements OnInit {
       this.componenteService.getComponente(value).subscribe((comp: Componente) => {
         this.procesadorLinea.componente = comp;
         this.procesadorLinea.precioVenta = comp.precio;
+        this.calcularPrecio();
       });
     }
   }
@@ -89,6 +100,7 @@ export class ConfiguratorComponent implements OnInit {
       this.componenteService.getComponente(value).subscribe((comp: Componente) => {
         this.discoDuroLinea.componente = comp;
         this.discoDuroLinea.precioVenta = comp.precio;
+        this.calcularPrecio();
       });
     }
   }
@@ -98,6 +110,7 @@ export class ConfiguratorComponent implements OnInit {
       this.componenteService.getComponente(value).subscribe((comp: Componente) => {
         this.tarjetaGraficaLinea.componente = comp;
         this.tarjetaGraficaLinea.precioVenta = comp.precio;
+        this.calcularPrecio();
       });
     }
   }
@@ -107,6 +120,7 @@ export class ConfiguratorComponent implements OnInit {
       this.componenteService.getComponente(value).subscribe((comp: Componente) => {
         this.memoriaRamLinea.componente = comp;
         this.memoriaRamLinea.precioVenta = comp.precio;
+        this.calcularPrecio();
       });
     }
   }
@@ -116,6 +130,7 @@ export class ConfiguratorComponent implements OnInit {
       this.componenteService.getComponente(value).subscribe((comp: Componente) => {
         this.cajaTorreLinea.componente = comp;
         this.cajaTorreLinea.precioVenta = comp.precio;
+        this.calcularPrecio();
       });
     }
   }
@@ -125,6 +140,7 @@ export class ConfiguratorComponent implements OnInit {
       this.componenteService.getComponente(value).subscribe((comp: Componente) => {
         this.ventilacionLinea.componente = comp;
         this.ventilacionLinea.precioVenta = comp.precio;
+        this.calcularPrecio();
       });
     }
   }
@@ -134,11 +150,13 @@ export class ConfiguratorComponent implements OnInit {
       this.componenteService.getComponente(value).subscribe((comp: Componente) => {
         this.fuenteAlimLinea.componente = comp;
         this.fuenteAlimLinea.precioVenta = comp.precio;
+        this.calcularPrecio();
       });
     }
   }
 
   public create(): void {
+    this.calcularPrecio();
     this.ordenadorService.create(this.ordenador).subscribe(
       (ordenador: Ordenador) => {
         this.createLineaOrdenador(ordenador);
@@ -201,6 +219,17 @@ export class ConfiguratorComponent implements OnInit {
         this.errores = err.error.errors as string[];
       });
     }
+  }
+
+  private calcularPrecio(): void {
+    this.ordenador.precioTotal = this.placaBaseLinea.precioVenta +
+      this.procesadorLinea.precioVenta +
+      this.discoDuroLinea.precioVenta +
+      this.tarjetaGraficaLinea.precioVenta +
+      this.memoriaRamLinea.precioVenta +
+      this.cajaTorreLinea.precioVenta +
+      this.ventilacionLinea.precioVenta +
+      this.fuenteAlimLinea.precioVenta;
   }
 
 }

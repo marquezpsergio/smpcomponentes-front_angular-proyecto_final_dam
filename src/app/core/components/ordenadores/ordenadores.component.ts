@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {OrdenadorService} from '../../services/ordenador.service';
+import {Ordenador} from '../../../shared/models/ordenador';
 
 @Component({
   selector: 'app-ordenadores',
@@ -7,10 +9,16 @@ import {Component, OnInit} from '@angular/core';
 })
 export class OrdenadoresComponent implements OnInit {
 
-  constructor() {
+  ordenadores: Ordenador[];
+
+  constructor(private ordenadorService: OrdenadorService) {
   }
 
   ngOnInit(): void {
+    this.ordenadorService.getOrdenadores().subscribe(
+      ordenadores => {
+        this.ordenadores = ordenadores;
+      }
+    );
   }
-
 }
