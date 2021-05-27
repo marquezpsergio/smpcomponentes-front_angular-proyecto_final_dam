@@ -3,14 +3,14 @@
 <div *ngIf="!componentes" class="alert alert-info">Cargando componentes...</div>
 
 <div class="my-2 text-left">
-  <button type="button" class="btn btn-rounded btn-primary" [routerLink]="['/componentes/form']">Crear
-    Componente
+  <button type="button" class="btn btn-rounded btn-primary" [routerLink]="['/componentes/form']">
+    <i class="fas fa-plus-circle"></i> Crear Componente
   </button>
 </div>
 
 <div *ngIf="componentes?.length == 0" class="alert alert-danger">No existen componentes en la base de datos.</div>
 
-<div *ngIf="componentes && componentes.length > 0" class="row row-cols-2 row-cols-md-5 g-4">
+<div *ngIf="componentes && componentes.length > 0" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4">
   <div *ngFor="let componente of componentes" class="col">
     <div class="card h-100">
       <p class="card-text text-end p-2">

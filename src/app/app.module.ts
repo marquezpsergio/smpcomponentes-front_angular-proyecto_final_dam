@@ -13,6 +13,7 @@ import {ComponentesCategoriaComponent} from './core/components/componentes-categ
 import {ComponentesFabricanteComponent} from './core/components/componentes-fabricante/componentes-fabricante.component';
 import {FormComponent} from './core/components/componentes/form.component';
 import {OrdenadoresComponent} from './core/components/ordenadores/ordenadores.component';
+import {OrdenadorDetalleComponent} from './core/components/ordenadores/ordenador-detalle.component';
 // Services
 import {ComponenteService} from './core/services/componente.service';
 import {FormsModule} from '@angular/forms';
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'configurador', component: ConfiguratorComponent},
   {path: 'componentes', component: ComponentesComponent},
   {path: 'ordenadores', component: OrdenadoresComponent},
+  {path: 'ordenadores-detalles/:id', component: OrdenadorDetalleComponent},
   {path: 'componentes/categoria/:id', component: ComponentesCategoriaComponent},
   {path: 'componentes/fabricante/:id', component: ComponentesFabricanteComponent},
   {path: 'componentes/form', component: FormComponent},
@@ -41,7 +43,8 @@ const routes: Routes = [
     ComponentesCategoriaComponent,
     ComponentesFabricanteComponent,
     FormComponent,
-    OrdenadoresComponent
+    OrdenadoresComponent,
+    OrdenadorDetalleComponent
   ],
   imports: [
     BrowserModule,

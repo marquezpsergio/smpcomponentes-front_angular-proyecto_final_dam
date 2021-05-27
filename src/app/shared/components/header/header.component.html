@@ -2,21 +2,20 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">{{titulo}}</a>
     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-            class="navbar-toggler"
-            data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+            class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a [routerLink]="['/configurador']" class="nav-link" routerLinkActive="active">Configura tu PC!</a>
+          <a [routerLink]="['/configurador']" class="nav-link" routerLinkActive="active">
+            <i class="fas fa-laptop-medical"></i> Configura tu PC!</a>
         </li>
         <li class="nav-item">
           <a [routerLink]="['/componentes']" class="nav-link" routerLinkActive="active">Componentes</a>
         </li>
         <li class="nav-item dropdown">
-          <a href="" aria-expanded="false" class="nav-link dropdown-toggle"
-             data-bs-toggle="dropdown"
+          <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href=""
              id="navbarDropdownCategoria" role="button" routerLinkActive="active">
             Categorías
           </a>
@@ -26,8 +25,7 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a href="" aria-expanded="false" class="nav-link dropdown-toggle"
-             data-bs-toggle="dropdown"
+          <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href=""
              id="navbarDropdownFabricante" role="button" routerLinkActive="active">
             Fabricantes
           </a>

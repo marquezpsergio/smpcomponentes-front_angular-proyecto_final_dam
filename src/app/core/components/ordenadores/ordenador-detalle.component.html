@@ -1,0 +1,66 @@
+<ul *ngIf="errores?.length > 0" class="alert alert-danger">
+  <li *ngFor="let err of errores">
+    {{err}}
+  </li>
+</ul>
+
+<div *ngIf="!ordenador" class="alert alert-info">Cargando ordenador...</div>
+
+<div class="my-2 text-left">
+  <button type="button" class="btn btn-small btn-rounded btn-primary" [routerLink]="['/configurador']">
+    <i class="fas fa-laptop-medical"></i> Configurar Nuevo
+    Ordenador
+  </button>
+</div>
+
+<div *ngIf="ordenador.id > 0" class="row my-3">
+  <div class="col-12">
+    <div class="card h-100">
+      <div class="card-header text-center">
+        <h2>Ordenador #{{ordenador.id}}</h2>
+        Creador: <b>{{ordenador.usuario.usuario}}</b>
+      </div>
+      <div class="card-body px-5">
+        <div class="accordion accordion-flush" id="accordionLista">
+          <div class="accordion-item" *ngFor="let linea of ordenador.lineasOrdenador; index as i">
+            <h2 class="accordion-header" [attr.id]="'heading'+i">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                      [attr.data-bs-target]="'#collapse'+i" aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+                <span class="fw-bold">{{linea.componente.categoria.nombre}}</span>: &nbsp;<span class="fw-light">
+                  {{linea.componente.fabricante.nombre}} {{linea.componente.nombre}}</span>
+              </button>
+            </h2>
+            <div [attr.id]="'collapse'+i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading'+i"
+                 [class.show]="i === 0">
+              <div class="accordion-body">
+                <div class="row">
+                  <div class="col-5 col-sm-4 col-md-3">
+                    <img alt="Imagen {{linea.componente.nombre}}" class="card-img-top w-100"
+                         src="{{linea.componente.imagen}}">
+                  </div>
+                  <div class="col-5 col-sm-6 offset-1 my-auto">
+                    <div class="row">
+                      <p><b>Categoría</b>: {{linea.componente.categoria.nombre}}</p>
+                      <p><b>Fabricante</b>: {{linea.componente.fabricante.nombre}}</p>
+                      <p><b>Componente</b>: {{linea.componente.nombre}}</p>
+                      <p><a class="btn btn-primary text-white" href="{{linea.componente.url}}" target="_blank">
+                        <i aria-hidden="true" class="fa fa-info-circle"></i> Más información</a></p>
+                    </div>
+                  </div>
+                  <div class="col-1 col-md-2 my-auto text-center">
+                    <h3><span class="badge bg-secondary p-3">{{linea.componente.precio | number:'1.2-2'}}€</span></h3>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer px-5 p-2">
+        <h2 class="text-end m-2">Precio Total: <span class="badge bg-secondary">{{ordenador.precioTotal |
+          number:'1.2-2'}}€</span></h2>
+      </div>
+    </div>
+  </div>
+</div>

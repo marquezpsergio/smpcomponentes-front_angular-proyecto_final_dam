@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Ordenador} from '../../shared/models/ordenador';
 import swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,26 @@ export class OrdenadorService {
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
   getOrdenadores(): Observable<Ordenador[]> {
     return this.http.get<Ordenador[]>(this.urlEndPoint).pipe(
       map(response => response as Ordenador[])
+    );
+  }
+
+  getOrdenador(id): Observable<Ordenador> {
+    return this.http.get<Ordenador>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(e => {
+        if (e.status === 400) {
+          return throwError(e);
+        }
+        this.router.navigate(['/ordenadores']);
+        swal.fire('ERROR!', e.error.mensaje, 'error');
+        return throwError(e);
+      })
     );
   }
 

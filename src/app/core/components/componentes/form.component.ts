@@ -25,7 +25,7 @@ export class FormComponent implements OnInit {
               private fabricanteService: FabricanteService,
               private componenteService: ComponenteService,
               private router: Router,
-              private activadedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class FormComponent implements OnInit {
   }
 
   public cargarComponente(): void {
-    this.activadedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
         const id = params.id;
         if (id) {
           this.componenteService.getComponente(id).subscribe(

@@ -11,7 +11,6 @@ import swal from 'sweetalert2';
 export class LineaOrdenadorService {
 
   private urlEndPoint = 'http://localhost:8080/api/lineas-ordenadores';
-  private urlEndPointLineasOrdenador = 'http://localhost:8080/api/lineas-ordenadores/ordenador';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
 
@@ -20,12 +19,6 @@ export class LineaOrdenadorService {
 
   getLineasOrdenadores(): Observable<LineaOrdenador[]> {
     return this.http.get<LineaOrdenador[]>(this.urlEndPoint).pipe(
-      map(response => response as LineaOrdenador[])
-    );
-  }
-
-  getLineasOrdenadoresByOrdenadorId(ordenadorId: number): Observable<LineaOrdenador[]> {
-    return this.http.get<LineaOrdenador[]>(`${this.urlEndPointLineasOrdenador}/${ordenadorId}`).pipe(
       map(response => response as LineaOrdenador[])
     );
   }
