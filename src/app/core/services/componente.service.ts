@@ -34,7 +34,7 @@ export class ComponenteService {
           return throwError(e);
         }
         this.router.navigate(['/componentes']);
-        swal.fire('ERROR!', e.error.mensaje, 'error');
+        swal.fire('ERROR!', e.error.message, 'error');
         return throwError(e);
       })
     );
@@ -59,7 +59,7 @@ export class ComponenteService {
           return throwError(e);
         }
 
-        swal.fire('Error al crear el componente!', e.error.mensaje, 'error');
+        swal.fire('Error al crear el componente!', e.error.message, 'error');
         return throwError(e);
       })
     );
@@ -71,7 +71,7 @@ export class ComponenteService {
         if (e.status === 400) {
           return throwError(e);
         }
-        swal.fire('Error al editar el componente!', e.error.mensaje, 'error');
+        swal.fire('Error al editar el componente!', e.error.message, 'error');
         return throwError(e);
       })
     );
@@ -83,7 +83,7 @@ export class ComponenteService {
         if (e.status === 400) {
           return throwError(e);
         }
-        swal.fire('Error al eliminar el componente!', e.error.mensaje, 'error');
+        swal.fire('Error al eliminar el componente!', e.error.message, 'error');
         return throwError(e);
       })
     );

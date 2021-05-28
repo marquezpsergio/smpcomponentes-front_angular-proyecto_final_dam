@@ -204,7 +204,7 @@
 
       <div class="form-group row my-1 pt-3 text-end">
         <hr>
-        <div class="col-md-11">
+        <div class="col-md-11" *ngIf="ordenador.precioTotal > 0.01">
           <h5>PRECIO TOTAL: <span class="badge bg-danger">{{ordenador.precioTotal | number:'1.2-2'}}€</span></h5>
         </div>
       </div>

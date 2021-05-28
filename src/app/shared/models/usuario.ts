@@ -4,7 +4,7 @@ export class Usuario {
   id: number;
   email: string;
   fechaRegistro: string;
-  usuario: string;
+  nombreUsuario: string;
   password: string;
   rol: Rol;
 }

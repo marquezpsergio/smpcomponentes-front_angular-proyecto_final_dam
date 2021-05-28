@@ -31,7 +31,7 @@ export class ComponentesComponent implements OnInit {
     });
 
     swalWithBootstrapButtons.fire({
-      title: '¿Está seguro?',
+      title: '¿Eliminar componente?',
       text: `¿Está seguro de que desea eliminar el componente ${componente.nombre}?`,
       icon: 'warning',
       showCancelButton: true,

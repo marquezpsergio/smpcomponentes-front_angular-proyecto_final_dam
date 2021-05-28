@@ -14,6 +14,7 @@ import {ComponentesFabricanteComponent} from './core/components/componentes-fabr
 import {FormComponent} from './core/components/componentes/form.component';
 import {OrdenadoresComponent} from './core/components/ordenadores/ordenadores.component';
 import {OrdenadorDetalleComponent} from './core/components/ordenadores/ordenador-detalle.component';
+import {LoginComponent} from './core/auth/login.component';
 // Services
 import {ComponenteService} from './core/services/componente.service';
 import {FormsModule} from '@angular/forms';
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'componentes/fabricante/:id', component: ComponentesFabricanteComponent},
   {path: 'componentes/form', component: FormComponent},
   {path: 'componentes/form/:id', component: FormComponent},
-  {path: '**', pathMatch: 'full', redirectTo: ''}
+  {path: 'login', component: LoginComponent},
+  {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
 @NgModule({
@@ -44,7 +46,8 @@ const routes: Routes = [
     ComponentesFabricanteComponent,
     FormComponent,
     OrdenadoresComponent,
-    OrdenadorDetalleComponent
+    OrdenadorDetalleComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
