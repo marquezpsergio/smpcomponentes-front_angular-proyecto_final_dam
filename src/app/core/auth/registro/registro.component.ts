@@ -28,8 +28,6 @@ export class RegistroComponent implements OnInit {
         this.isRegister = true;
         this.isRegisterFail = false;
 
-        swal.fire('Usuario registrado', 'Su usuario ha sido creado correctamente', 'success');
-
         new Promise(resolve => setTimeout(resolve, 3000)).then(() => {
           window.location.href = '/home';
         });

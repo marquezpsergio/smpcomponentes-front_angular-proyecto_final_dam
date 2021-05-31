@@ -49,8 +49,6 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenService.getAuthorities();
         this.username = this.tokenService.getUserName();
 
-        swal.fire('Sesión iniciada', 'Sesión iniciada correctamente', 'success');
-
         new Promise(resolve => setTimeout(resolve, 3000)).then(() => {
           window.location.href = '/home';
         });
