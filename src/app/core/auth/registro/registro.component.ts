@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/security/auth.service';
 import {NuevoUsuario} from '../../../shared/models/security/nuevo-usuario';
 import swal from 'sweetalert2';
+import {TokenService} from '../../services/security/token.service';
 
 @Component({
   selector: 'app-registro',
@@ -16,7 +17,8 @@ export class RegistroComponent implements OnInit {
   errorMsg = '';
   private usuario: any = {};
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private tokenService: TokenService) {
   }
 
   ngOnInit() {
@@ -27,6 +29,14 @@ export class RegistroComponent implements OnInit {
     this.authService.registro(this.usuario).subscribe(() => {
         this.isRegister = true;
         this.isRegisterFail = false;
+
+        swal.fire('Usuario registrado', 'Su usuario ha sido registrado correctamente', 'success');
+
+        this.authService.login(this.usuario).subscribe(data => {
+          this.tokenService.setToken(data.token);
+          this.tokenService.setUserName(data.nombreUsuario);
+          this.tokenService.setAuthorities(data.authorities);
+        });
 
         new Promise(resolve => setTimeout(resolve, 3000)).then(() => {
           window.location.href = '/home';
@@ -39,6 +49,7 @@ export class RegistroComponent implements OnInit {
         this.errorMsg = err.error.mensaje;
       }
     );
+
   }
 
 }

@@ -7,6 +7,8 @@ import {Componente} from '../../../shared/models/componente';
 import {ComponenteService} from '../../services/componente.service';
 import swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import {UsuarioService} from '../../services/usuario.service';
+import {TokenService} from '../../services/security/token.service';
 
 @Component({
   selector: 'app-configurator',
@@ -35,15 +37,23 @@ export class ConfiguratorComponent implements OnInit {
   public fuenteAlimLinea = new LineaOrdenador();
   public ordenador: Ordenador = new Ordenador();
 
+  isLogin: boolean;
   errores: string[];
 
   constructor(private ordenadorService: OrdenadorService,
               private lineaOrdenadorService: LineaOrdenadorService,
               private componenteService: ComponenteService,
+              private usuarioService: UsuarioService,
+              private tokenService: TokenService,
               private router: Router) {
   }
 
   ngOnInit(): void {
+    if (this.tokenService.getToken()) {
+      this.isLogin = true;
+      this.usuarioService.getUsuarioByNombreUsuario(this.tokenService.getUserName()).subscribe(user => this.ordenador.usuario = user);
+    }
+
     this.cargarForm();
   }
 
@@ -64,15 +74,15 @@ export class ConfiguratorComponent implements OnInit {
       componentes => this.ventilacionComps = componentes);
     this.componenteService.getComponentesByCategoria(11).subscribe(
       componentes => this.fuenteAlimComps = componentes);
-    this.ordenador.precioTotal = 0;
-    this.placaBaseLinea.precioVenta = 0;
-    this.procesadorLinea.precioVenta = 0;
-    this.discoDuroLinea.precioVenta = 0;
-    this.tarjetaGraficaLinea.precioVenta = 0;
-    this.memoriaRamLinea.precioVenta = 0;
-    this.cajaTorreLinea.precioVenta = 0;
-    this.ventilacionLinea.precioVenta = 0;
-    this.fuenteAlimLinea.precioVenta = 0;
+    this.ordenador.precioTotal =
+      this.placaBaseLinea.precioVenta =
+        this.procesadorLinea.precioVenta =
+          this.discoDuroLinea.precioVenta =
+            this.tarjetaGraficaLinea.precioVenta =
+              this.memoriaRamLinea.precioVenta =
+                this.cajaTorreLinea.precioVenta =
+                  this.ventilacionLinea.precioVenta =
+                    this.fuenteAlimLinea.precioVenta = 0;
   }
 
   placaBaseChange(value: string): void {
@@ -157,68 +167,28 @@ export class ConfiguratorComponent implements OnInit {
 
   public create(): void {
     this.calcularPrecio();
+    this.ordenador.lineasOrdenador = [this.placaBaseLinea,
+      this.procesadorLinea,
+      this.discoDuroLinea,
+      this.tarjetaGraficaLinea,
+      this.memoriaRamLinea,
+      this.cajaTorreLinea,
+      this.fuenteAlimLinea];
+
+    if (this.ventilacionLinea.id > 0 && this.ventilacionLinea !== undefined && this.ventilacionLinea !== null) {
+      this.ordenador.lineasOrdenador.push(this.ventilacionLinea);
+    }
+
     this.ordenadorService.create(this.ordenador).subscribe(
       (ordenador: Ordenador) => {
-        this.createLineaOrdenador(ordenador);
-        swal.fire('Nuevo ordenador', 'Ordenador creado con éxito', 'success');
+        this.ordenador = ordenador;
         this.router.navigate(['/ordenadores']);
+        swal.fire('Nuevo ordenador', 'Ordenador creado con éxito', 'success');
       },
       err => {
         this.errores = err.error.errors as string[];
       }
     );
-  }
-
-  public createLineaOrdenador(ordenadorCreado: Ordenador): void {
-    this.placaBaseLinea.ordenador = ordenadorCreado['ordenador'];
-    this.lineaOrdenadorService.create(this.placaBaseLinea).subscribe(() => {
-    }, err => {
-      this.errores = err.error.errors as string[];
-    });
-
-    this.procesadorLinea.ordenador = ordenadorCreado['ordenador'];
-    this.lineaOrdenadorService.create(this.procesadorLinea).subscribe(() => {
-    }, err => {
-      this.errores = err.error.errors as string[];
-    });
-
-    this.discoDuroLinea.ordenador = ordenadorCreado['ordenador'];
-    this.lineaOrdenadorService.create(this.discoDuroLinea).subscribe(() => {
-    }, err => {
-      this.errores = err.error.errors as string[];
-    });
-
-    this.tarjetaGraficaLinea.ordenador = ordenadorCreado['ordenador'];
-    this.lineaOrdenadorService.create(this.tarjetaGraficaLinea).subscribe(() => {
-    }, err => {
-      this.errores = err.error.errors as string[];
-    });
-
-    this.memoriaRamLinea.ordenador = ordenadorCreado['ordenador'];
-    this.lineaOrdenadorService.create(this.memoriaRamLinea).subscribe(() => {
-    }, err => {
-      this.errores = err.error.errors as string[];
-    });
-
-    this.cajaTorreLinea.ordenador = ordenadorCreado['ordenador'];
-    this.lineaOrdenadorService.create(this.cajaTorreLinea).subscribe(() => {
-    }, err => {
-      this.errores = err.error.errors as string[];
-    });
-
-    this.ventilacionLinea.ordenador = ordenadorCreado['ordenador'];
-    this.lineaOrdenadorService.create(this.ventilacionLinea).subscribe(() => {
-    }, err => {
-      this.errores = err.error.errors as string[];
-    });
-
-    if (this.fuenteAlimLinea.componente !== undefined && this.fuenteAlimLinea.componente !== null) {
-      this.fuenteAlimLinea.ordenador = ordenadorCreado['ordenador'];
-      this.lineaOrdenadorService.create(this.fuenteAlimLinea).subscribe(() => {
-      }, err => {
-        this.errores = err.error.errors as string[];
-      });
-    }
   }
 
   private calcularPrecio(): void {

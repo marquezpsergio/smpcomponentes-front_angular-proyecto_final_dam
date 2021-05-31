@@ -17,6 +17,7 @@
         <div class="col-md-6">
           <input #placaBase="ngModel" [(ngModel)]="placaBaseLinea.componente" class="form-control" id="placaBase"
                  list="list_placaBase" name="placaBase" placeholder="Seleccione una placa base" required
+                 autocomplete="off"
                  (change)="placaBaseChange($event.target.value)">
           <datalist id="list_placaBase">
             <option *ngFor="let item of placaBaseComps" [value]="item.id">{{item.nombre}} --- {{item.precio |
@@ -42,6 +43,7 @@
         <div class="col-md-6">
           <input #procesador="ngModel" [(ngModel)]="procesadorLinea.componente" class="form-control" id="procesador"
                  list="list_procesador" name="procesador" placeholder="Seleccione un procesador" required
+                 autocomplete="off"
                  (change)="procesadorChange($event.target.value)">
           <datalist id="list_procesador">
             <option *ngFor="let item of procesadorComps" [value]="item.id">{{item.nombre}} --- {{item.precio |
@@ -67,7 +69,7 @@
         <div class="col-md-6">
           <input #tarjetaGrafica="ngModel" [(ngModel)]="tarjetaGraficaLinea.componente" class="form-control"
                  id="tarjetaGrafica" list="list_tarjetaGrafica" name="tarjetaGrafica"
-                 placeholder="Seleccione una tarjeta grafica" required
+                 placeholder="Seleccione una tarjeta grafica" required autocomplete="off"
                  (change)="tarjetaGraficaChange($event.target.value)">
           <datalist id="list_tarjetaGrafica">
             <option *ngFor="let item of tarjetaGraficaComps" [value]="item.id">{{item.nombre}} --- {{item.precio |
@@ -94,6 +96,7 @@
         <div class="col-md-6">
           <input #memoriaRam="ngModel" [(ngModel)]="memoriaRamLinea.componente" class="form-control" id="memoriaRam"
                  list="list_memoriaRam" name="memoriaRam" placeholder="Seleccione una memoria RAM" required
+                 autocomplete="off"
                  (change)="memoriaRAMChange($event.target.value)">
           <datalist id="list_memoriaRam">
             <option *ngFor="let item of memoriaRamComps" [value]="item.id">{{item.nombre}} --- {{item.precio |
@@ -119,6 +122,7 @@
         <div class="col-md-6">
           <input #fuenteAlim="ngModel" [(ngModel)]="fuenteAlimLinea.componente" class="form-control" id="fuenteAlim"
                  list="list_fuenteAlim" name="fuenteAlim" placeholder="Seleccione una fuente de alimentación" required
+                 autocomplete="off"
                  (change)="fuenteAlimChange($event.target.value)">
           <datalist id="list_fuenteAlim">
             <option *ngFor="let item of fuenteAlimComps" [value]="item.id">{{item.nombre}} --- {{item.precio |
@@ -143,7 +147,7 @@
         </label>
         <div class="col-md-6">
           <input [(ngModel)]="discoDuroLinea.componente" class="form-control" id="discoDuro" list="list_discoDuro"
-                 name="discoDuro" placeholder="Seleccione un disco duro"
+                 name="discoDuro" placeholder="Seleccione un disco duro" autocomplete="off"
                  (change)="discoDuroChange($event.target.value)">
           <datalist id="list_discoDuro">
             <option *ngFor="let item of discoDuroComps" [value]="item.id">{{item.nombre}} --- {{item.precio |
@@ -164,6 +168,7 @@
         <div class="col-md-6">
           <input #cajaTorre="ngModel" [(ngModel)]="cajaTorreLinea.componente" class="form-control" id="cajaTorre"
                  list="list_cajaTorre" name="cajaTorre" placeholder="Seleccione una caja o torre" required
+                 autocomplete="off"
                  (change)="cajaTorreChange($event.target.value)">
           <datalist id="list_cajaTorre">
             <option *ngFor="let item of cajaTorreComps" [value]="item.id">{{item.nombre}} --- {{item.precio |
@@ -188,7 +193,7 @@
         </label>
         <div class="col-md-6">
           <input [(ngModel)]="ventilacionLinea.componente" class="form-control" id="ventilacion" list="list_ventilacion"
-                 name="ventilacion" placeholder="Seleccione ventilación"
+                 name="ventilacion" placeholder="Seleccione ventilación" autocomplete="off"
                  (change)="ventilacionChange($event.target.value)">
           <datalist id="list_ventilacion">
             <option *ngFor="let item of ventilacionComps" [value]="item.id">{{item.nombre}} --- {{item.precio |
