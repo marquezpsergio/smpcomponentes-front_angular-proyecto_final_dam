@@ -16,7 +16,7 @@ export class ComponentesCategoriaComponent implements OnInit {
 
   componentes: Componente[];
   categoria: Categoria;
-  userLoggedRol: string;
+  authority: string;
 
   constructor(private componenteService: ComponenteService,
               private categoriaService: CategoriaService,
@@ -26,6 +26,14 @@ export class ComponentesCategoriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tokenService.getAuthorities().every(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.authority = 'admin';
+      } else {
+        this.authority = 'user';
+      }
+    });
+
     this.activatedRouter.params.subscribe(params => {
       const id = params.id;
       if (id) {
@@ -37,7 +45,6 @@ export class ComponentesCategoriaComponent implements OnInit {
         );
       }
     });
-    this.userLoggedRol = this.tokenService.getAuthorities()[0];
   }
 
   delete(componente: Componente): void {

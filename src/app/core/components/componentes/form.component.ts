@@ -19,7 +19,7 @@ export class FormComponent implements OnInit {
   componente = new Componente();
   categorias: Categoria[];
   fabricantes: Fabricante[];
-  userLoggedRol: string;
+  authority: string;
 
   errores: string[];
 
@@ -32,6 +32,14 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tokenService.getAuthorities().every(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.authority = 'admin';
+      } else {
+        this.authority = 'user';
+      }
+    });
+
     this.categoriaService.getCategorias().subscribe(
       categorias => this.categorias = categorias
     );
@@ -40,7 +48,6 @@ export class FormComponent implements OnInit {
       fabricantes => this.fabricantes = fabricantes
     );
 
-    this.userLoggedRol = this.tokenService.getAuthorities()[0];
     this.cargarComponente();
   }
 

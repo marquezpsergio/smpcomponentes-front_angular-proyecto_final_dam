@@ -2,7 +2,7 @@
 
 <div *ngIf="!componentes" class="alert alert-info">Cargando componentes...</div>
 
-<div class="my-2 text-left" *ngIf="userLoggedRol === 'admin'">
+<div class="my-2 text-left" *ngIf="authority === 'admin'">
   <button type="button" class="btn btn-rounded btn-primary" [routerLink]="['/componentes/form']">
     <i class="fas fa-plus-circle"></i> Crear Componente
   </button>
@@ -36,12 +36,12 @@
         </p>
         <div class="row text-center">
           <hr>
-          <div class="col-6" *ngIf="userLoggedRol === 'admin'">
+          <div class="col-6" *ngIf="authority === 'admin'">
             <button type="button" name="editar" class="btn btn-primary w-100"
                     [routerLink]="['/componentes/form', componente.id]">Editar
             </button>
           </div>
-          <div class="col-6" *ngIf="userLoggedRol === 'admin'">
+          <div class="col-6" *ngIf="authority === 'admin'">
             <button type="button" name="eliminar" class="btn btn-danger w-100" (click)="delete(componente)">Eliminar
             </button>
           </div>

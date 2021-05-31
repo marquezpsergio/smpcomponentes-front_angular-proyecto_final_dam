@@ -19,11 +19,17 @@ export class ComponentesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tokenService.getAuthorities().every(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.authority = 'admin';
+      } else {
+        this.authority = 'user';
+      }
+    });
+
     this.componenteService.getComponentes().subscribe(
       componentes => this.componentes = componentes
     );
-
-    this.authority = this.tokenService.getAuthorities()[0];
   }
 
   delete(componente: Componente): void {

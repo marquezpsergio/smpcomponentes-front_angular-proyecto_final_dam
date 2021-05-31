@@ -1,6 +1,6 @@
 <div *ngIf="!categorias || !fabricantes" class="alert alert-info">Cargando formulario...</div>
 
-<div *ngIf="userLoggedRol !== 'admin'" class="alert alert-danger">Usted no tiene el rol de 'administrador'.</div>
+<div *ngIf="authority !== 'admin'" class="alert alert-danger">Usted no tiene el rol de 'administrador'.</div>
 
 <ul class="alert alert-danger" *ngIf="errores?.length > 0">
   <li *ngFor="let err of errores">
@@ -9,7 +9,7 @@
 </ul>
 
 
-<div class="card bg-dark text-white" *ngIf="categorias && fabricantes && userLoggedRol === 'admin'">
+<div class="card bg-dark text-white" *ngIf="categorias && fabricantes && authority === 'admin'">
   <div class="card-header">{{titulo}}</div>
   <div class="card-body">
     <form #componenteForm="ngForm">

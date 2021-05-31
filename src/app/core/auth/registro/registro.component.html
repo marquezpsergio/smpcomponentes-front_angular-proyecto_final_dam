@@ -1,0 +1,38 @@
+<div *ngIf="isRegister; else noRegister" class="text-center py-3">
+  <span class="alert alert-success text-center h5">Has iniciado sesión como:&nbsp; <b>{{ username }}</b></span>
+  <div class="p-1 my-5 text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Redirigiendo...</span>
+    </div>
+    <p class="my-auto text-center">Redirigiendo...</p>
+  </div>
+</div>
+
+<ng-template #noRegister>
+  <div *ngIf="!isRegister" class="container border rounded">
+    <h5 class="text-center">Registro</h5>
+    <form name="form" #f="ngForm" novalidate (ngSubmit)="onRegister()">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" name="email" id="email" [(ngModel)]="form.email" #email="ngModel" email
+               autocomplete="off" required>
+      </div>
+      <div class="form-group mt-2">
+        <label for="nombreUsuario">Nombre de Usuario: </label>
+        <input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" [(ngModel)]="form.nombreUsuario"
+               #nombreUsuario="ngModel" autocomplete="off" required>
+      </div>
+      <div class="form-group mt-2">
+        <label for="password">Contraseña: </label>
+        <input type="password" class="form-control" name="password" id="password" [(ngModel)]="form.password"
+               #password="ngModel" autocomplete="off" required>
+      </div>
+      <div class="form-group mt-3">
+        <button type="submit" class="btn btn-success" [disabled]="!f.valid"><i class="fas fa-user-plus"></i> Crear
+          Cuenta
+        </button>
+        <p *ngIf="f.submitted && isRegisterFail" class="alert alert-danger mt-3">ERROR al registrarse: {{errorMsg}}</p>
+      </div>
+    </form>
+  </div>
+</ng-template>
