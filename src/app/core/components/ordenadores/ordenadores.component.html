@@ -8,7 +8,7 @@
   </button>
 </div>
 
-<div *ngIf="ordenadores?.length == 0" class="alert alert-danger">No existen ordenadores en la base de datos.</div>
+<div *ngIf="ordenadores?.length == 0" class="alert alert-danger">No existen ordenadores.</div>
 
 <div *ngIf="ordenadores && ordenadores.length > 0" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-2">
   <div *ngFor="let ordenador of ordenadores" class="col">

@@ -1,14 +1,14 @@
-<h3 *ngIf="fabricante">Componentes del fabricante '{{fabricante.nombre}}'</h3>
+<h3 *ngIf="fabricante" class="text-center">Componentes del fabricante '{{fabricante.nombre}}'</h3>
 
 <div *ngIf="!componentes" class="alert alert-info">Cargando componentes...</div>
 
-<div class="my-2 text-left">
+<div class="my-2 text-left" *ngIf="userLoggedRol === 'admin'">
   <button type="button" class="btn btn-rounded btn-primary" [routerLink]="['/componentes/form']">
     <i class="fas fa-plus-circle"></i> Crear Componente
   </button>
 </div>
 
-<div *ngIf="componentes?.length == 0" class="alert alert-danger">No existen componentes en la base de datos.</div>
+<div *ngIf="componentes?.length == 0" class="alert alert-danger">No existen componentes.</div>
 
 <div *ngIf="componentes && componentes.length > 0" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4">
   <div *ngFor="let componente of componentes" class="col">
@@ -33,14 +33,13 @@
         </p>
         <div class="row text-center">
           <hr>
-          <div class="col-6">
+          <div class="col-6" *ngIf="userLoggedRol === 'admin'">
             <button type="button" name="editar" class="btn btn-primary w-100"
                     [routerLink]="['/componentes/form', componente.id]">Editar
             </button>
           </div>
-          <div class="col-6">
-            <button type="button" name="eliminar" class="btn btn-danger w-100"
-                    (click)="delete(componente)">Eliminar
+          <div class="col-6" *ngIf="userLoggedRol === 'admin'">
+            <button type="button" name="eliminar" class="btn btn-danger w-100" (click)="delete(componente)">Eliminar
             </button>
           </div>
         </div>

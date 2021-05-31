@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Componente} from '../../../shared/models/componente';
 import {ComponenteService} from '../../services/componente.service';
 import swal from 'sweetalert2';
+import {TokenService} from '../../services/security/token.service';
 
 @Component({
   selector: 'app-componentes',
@@ -11,14 +12,18 @@ import swal from 'sweetalert2';
 export class ComponentesComponent implements OnInit {
 
   componentes: Componente[];
+  authority: string;
 
-  constructor(private componenteService: ComponenteService) {
+  constructor(private componenteService: ComponenteService,
+              private tokenService: TokenService) {
   }
 
   ngOnInit(): void {
     this.componenteService.getComponentes().subscribe(
       componentes => this.componentes = componentes
     );
+
+    this.authority = this.tokenService.getAuthorities()[0];
   }
 
   delete(componente: Componente): void {

@@ -14,10 +14,12 @@ import {ComponentesFabricanteComponent} from './core/components/componentes-fabr
 import {FormComponent} from './core/components/componentes/form.component';
 import {OrdenadoresComponent} from './core/components/ordenadores/ordenadores.component';
 import {OrdenadorDetalleComponent} from './core/components/ordenadores/ordenador-detalle.component';
-import {LoginComponent} from './core/auth/login.component';
+import {LoginComponent} from './core/auth/login/login.component';
+import {RegistroComponent} from './core/auth/registro/registro.component';
 // Services
 import {ComponenteService} from './core/services/componente.service';
 import {FormsModule} from '@angular/forms';
+import {interceptorProvider} from './core/interceptors/interceptor.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -31,6 +33,7 @@ const routes: Routes = [
   {path: 'componentes/form', component: FormComponent},
   {path: 'componentes/form/:id', component: FormComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
@@ -47,7 +50,8 @@ const routes: Routes = [
     FormComponent,
     OrdenadoresComponent,
     OrdenadorDetalleComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ComponenteService],
+  providers: [ComponenteService, interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule {

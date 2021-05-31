@@ -5,6 +5,7 @@ import {FabricanteService} from '../../services/fabricante.service';
 import {ComponenteService} from 'app/core/services/componente.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import swal from 'sweetalert2';
+import {TokenService} from '../../services/security/token.service';
 
 @Component({
   selector: 'app-componentes-categoria',
@@ -15,11 +16,13 @@ export class ComponentesFabricanteComponent implements OnInit {
 
   componentes: Componente[];
   fabricante: Fabricante;
+  userLoggedRol: string;
 
   constructor(private componenteService: ComponenteService,
               private fabricanteService: FabricanteService,
               private router: Router,
-              private activatedRouter: ActivatedRoute) {
+              private activatedRouter: ActivatedRoute,
+              private tokenService: TokenService) {
   }
 
   ngOnInit(): void {
@@ -34,9 +37,11 @@ export class ComponentesFabricanteComponent implements OnInit {
         );
       }
     });
+    this.userLoggedRol = this.tokenService.getAuthorities()[0];
   }
 
   delete(componente: Componente): void {
+    console.log(componente);
     const swalWithBootstrapButtons = swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',

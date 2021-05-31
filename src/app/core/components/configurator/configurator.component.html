@@ -4,14 +4,14 @@
   </li>
 </ul>
 
-<div class="card bg-dark text-white mt-3 mb-5">
+<div class="card bg-dark m-auto text-white mt-3 mb-5">
   <div class="card-header">
-    <h3>{{titulo}}</h3>
+    <h3 class="text-center py-2">{{titulo}}</h3>
   </div>
-  <div class="card-body">
+  <div class="card-body ">
     <form #configuratorForm="ngForm">
-      <div class="form-group row my-1">
-        <label class="col-form-label col-md-2" for="placaBase">
+      <div class="form-group row my-3">
+        <label class="col-form-label col-md-2 offset-md-2" for="placaBase">
           Placa Base:
         </label>
         <div class="col-md-6">
@@ -29,14 +29,14 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 text-center text-sm-left ml-1">
+        <div class="col-md-2 text-center text-sm-left ml-1">
           <p *ngIf="placaBaseLinea.componente != undefined">{{ placaBaseLinea.componente.nombre }}
             | <span class="badge bg-primary"> {{ placaBaseLinea.componente.precio | number:'1.2-2'}}€</span></p>
         </div>
       </div>
 
-      <div class="form-group row my-1">
-        <label class="col-form-label col-md-2" for="procesador">
+      <div class="form-group row my-3">
+        <label class="col-form-label col-md-2 offset-md-2" for="procesador">
           Procesador:
         </label>
         <div class="col-md-6">
@@ -54,14 +54,14 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 offset-sm-0 text-center text-sm-left ml-1">
+        <div class="col-md-2 offset-sm-0 text-center text-sm-left ml-1">
           <p *ngIf="procesadorLinea.componente != undefined">{{ procesadorLinea.componente.nombre }}
             | <span class="badge bg-primary"> {{ procesadorLinea.componente.precio | number:'1.2-2'}}€</span></p>
         </div>
       </div>
 
-      <div class="form-group row my-1">
-        <label class="col-form-label col-md-2" for="tarjetaGrafica">
+      <div class="form-group row my-3">
+        <label class="col-form-label col-md-2 offset-md-2" for="tarjetaGrafica">
           Tarjeta Gráfica:
         </label>
         <div class="col-md-6">
@@ -81,14 +81,14 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 text-center text-sm-left ml-1">
+        <div class="col-md-2 text-center text-sm-left ml-1">
           <p *ngIf="tarjetaGraficaLinea.componente != undefined">{{ tarjetaGraficaLinea.componente.nombre }}
             | <span class="badge bg-primary"> {{ tarjetaGraficaLinea.componente.precio | number:'1.2-2'}}€</span></p>
         </div>
       </div>
 
-      <div class="form-group row my-1">
-        <label class="col-form-label col-md-2" for="memoriaRam">
+      <div class="form-group row my-3">
+        <label class="col-form-label col-md-2 offset-md-2" for="memoriaRam">
           Memoria RAM:
         </label>
         <div class="col-md-6">
@@ -106,14 +106,14 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 text-center text-sm-left ml-1">
+        <div class="col-md-2 text-center text-sm-left ml-1">
           <p *ngIf="memoriaRamLinea.componente != undefined">{{ memoriaRamLinea.componente.nombre }}
             | <span class="badge bg-primary"> {{ memoriaRamLinea.componente.precio | number:'1.2-2'}}€</span></p>
         </div>
       </div>
 
-      <div class="form-group row my-1">
-        <label class="col-form-label col-md-2" for="fuenteAlim">
+      <div class="form-group row my-3">
+        <label class="col-form-label col-md-2 offset-md-2" for="fuenteAlim">
           Fuente de alimentación:
         </label>
         <div class="col-md-6">
@@ -131,14 +131,14 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 text-center text-sm-left ml-1">
+        <div class="col-md-2 text-center text-sm-left ml-1">
           <p *ngIf="fuenteAlimLinea.componente != undefined">{{ fuenteAlimLinea.componente.nombre }}
             | <span class="badge bg-primary">{{ fuenteAlimLinea.componente.precio | number:'1.2-2'}}€</span></p>
         </div>
       </div>
 
-      <div class="form-group row my-1">
-        <label class="col-form-label col-md-2" for="discoDuro">
+      <div class="form-group row my-3">
+        <label class="col-form-label col-md-2 offset-md-2" for="discoDuro">
           Disco Duro:
         </label>
         <div class="col-md-6">
@@ -151,14 +151,14 @@
             </option>
           </datalist>
         </div>
-        <div class="col-md-4 text-center text-sm-left ml-1">
+        <div class="col-md-2 text-center text-sm-left ml-1">
           <p *ngIf="discoDuroLinea.componente != undefined">{{ discoDuroLinea.componente.nombre }}
             | <span class="badge bg-primary"> {{ discoDuroLinea.componente.precio | number:'1.2-2'}}€</span></p>
         </div>
       </div>
 
-      <div class="form-group row my-1">
-        <label class="col-form-label col-md-2" for="cajaTorre">
+      <div class="form-group row my-3">
+        <label class="col-form-label col-md-2 offset-md-2" for="cajaTorre">
           Caja/Torre:
         </label>
         <div class="col-md-6">
@@ -176,14 +176,14 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 text-center text-sm-left ml-1">
+        <div class="col-md-2 text-center text-sm-left ml-1">
           <p *ngIf="cajaTorreLinea.componente != undefined">{{ cajaTorreLinea.componente.nombre }}
             | <span class="badge bg-primary"> {{ cajaTorreLinea.componente.precio | number:'1.2-2'}}€</span></p>
         </div>
       </div>
 
-      <div class="form-group row my-1">
-        <label class="col-form-label col-md-2" for="ventilacion">
+      <div class="form-group row my-3">
+        <label class="col-form-label col-md-2 offset-md-2" for="ventilacion">
           Ventilación:
         </label>
         <div class="col-md-6">
@@ -196,20 +196,20 @@
             </option>
           </datalist>
         </div>
-        <div class="col-md-4 text-center text-sm-left ml-1">
+        <div class="col-md-2 text-center text-sm-left ml-1">
           <p *ngIf="ventilacionLinea.componente != undefined">{{ ventilacionLinea.componente.nombre }}
             | <span class="badge bg-primary"> {{ ventilacionLinea.componente.precio | number:'1.2-2'}}€</span></p>
         </div>
       </div>
 
-      <div class="form-group row my-1 pt-3 text-end">
+      <div class="form-group row my-2 pt-3 text-end">
         <hr>
         <div class="col-md-11" *ngIf="ordenador.precioTotal > 0.01">
           <h5>PRECIO TOTAL: <span class="badge bg-danger">{{ordenador.precioTotal | number:'1.2-2'}}€</span></h5>
         </div>
       </div>
-      <div class="form-group row my-1 pt-3 text-center">
-        <div class="col-md-6 offset-sm-2">
+      <div class="form-group row my-3 pt-3 text-center">
+        <div class="col-md-8 offset-sm-2">
           <button (click)="create()" [disabled]="!configuratorForm.form.valid" class="btn btn-success w-100"
                   role="button"><i class="fas fa-plus-circle"></i> Crear Ordenador!
           </button>

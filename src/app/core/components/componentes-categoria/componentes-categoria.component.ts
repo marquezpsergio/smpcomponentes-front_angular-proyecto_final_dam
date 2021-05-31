@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CategoriaService} from '../../services/categoria.service';
 import {Categoria} from '../../../shared/models/categoria';
 import swal from 'sweetalert2';
+import {TokenService} from '../../services/security/token.service';
 
 @Component({
   selector: 'app-componentes-categoria',
@@ -15,11 +16,13 @@ export class ComponentesCategoriaComponent implements OnInit {
 
   componentes: Componente[];
   categoria: Categoria;
+  userLoggedRol: string;
 
   constructor(private componenteService: ComponenteService,
               private categoriaService: CategoriaService,
               private router: Router,
-              private activatedRouter: ActivatedRoute) {
+              private activatedRouter: ActivatedRoute,
+              private tokenService: TokenService) {
   }
 
   ngOnInit(): void {
@@ -34,6 +37,7 @@ export class ComponentesCategoriaComponent implements OnInit {
         );
       }
     });
+    this.userLoggedRol = this.tokenService.getAuthorities()[0];
   }
 
   delete(componente: Componente): void {

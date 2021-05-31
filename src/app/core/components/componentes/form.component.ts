@@ -7,6 +7,7 @@ import {FabricanteService} from '../../services/fabricante.service';
 import {ComponenteService} from '../../services/componente.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import swal from 'sweetalert2';
+import {TokenService} from '../../services/security/token.service';
 
 @Component({
   selector: 'app-form',
@@ -18,6 +19,7 @@ export class FormComponent implements OnInit {
   componente = new Componente();
   categorias: Categoria[];
   fabricantes: Fabricante[];
+  userLoggedRol: string;
 
   errores: string[];
 
@@ -25,7 +27,8 @@ export class FormComponent implements OnInit {
               private fabricanteService: FabricanteService,
               private componenteService: ComponenteService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private tokenService: TokenService) {
   }
 
   ngOnInit(): void {
@@ -37,6 +40,7 @@ export class FormComponent implements OnInit {
       fabricantes => this.fabricantes = fabricantes
     );
 
+    this.userLoggedRol = this.tokenService.getAuthorities()[0];
     this.cargarComponente();
   }
 

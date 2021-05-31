@@ -1,13 +1,1 @@
-<div *ngIf="info.token; else loggedOut">
-  <div class="container">
-    <p><strong>Tu nombre de usuario: </strong>{{ info.nombreUsuario}}</p>
-    <p><strong>Este es el token: </strong>{{ info.token}}</p>
-    <p><strong>Tus privilegios: </strong>{{ info.authorities}}</p>
-  </div>
-</div>
-<ng-template #loggedOut>
-  <div class="alert alert-warning">No has iniciado sesión.
-    <a class="btn btn-primary" [routerLink]="['/login']">LOGIN <i class="fas fa-sign-in-alt"></i>
-    </a>
-  </div>
-</ng-template>
+<h1 class="text-center">Bienvenido a SMPComponentes<span *ngIf="info.token">, {{info.nombreUsuario}}</span></h1>

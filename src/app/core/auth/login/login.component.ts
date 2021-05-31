@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {LoginUsuario} from 'app/shared/models/security/login-usuario';
-import {AuthService} from '../services/security/auth.service';
-import {TokenService} from '../services/security/token.service';
+import {AuthService} from '../../services/security/auth.service';
+import {TokenService} from '../../services/security/token.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   isLogged = false;
   isLoginFail = false;
   roles: string[] = [];
+  username: string;
   errorMsg = '';
 
   constructor(private authService: AuthService, private tokenService: TokenService, private router: Router) {
@@ -26,6 +27,11 @@ export class LoginComponent implements OnInit {
       this.isLogged = true;
       this.isLoginFail = false;
       this.roles = this.tokenService.getAuthorities();
+      this.username = this.tokenService.getUserName();
+
+      new Promise(resolve => setTimeout(resolve, 3000)).then(() => {
+        this.router.navigate(['/home']);
+      });
     }
   }
 
@@ -40,7 +46,10 @@ export class LoginComponent implements OnInit {
         this.isLogged = true;
         this.isLoginFail = false;
         this.roles = this.tokenService.getAuthorities();
-        window.location.reload();
+
+        new Promise(resolve => setTimeout(resolve, 3000)).then(() => {
+          this.router.navigate(['/home']);
+        });
       },
       (err: any) => {
         this.isLogged = false;

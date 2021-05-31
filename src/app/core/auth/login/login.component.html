@@ -1,0 +1,34 @@
+<div *ngIf="isLogged; else loggedOut" class="text-center py-3">
+  <span class="alert alert-success text-center h5">Has iniciado sesión como:&nbsp; <b>{{ username }}</b></span>
+  <div class="p-1 my-5 text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Redirigiendo...</span>
+    </div>
+    <p class="my-auto text-center">Redirigiendo...</p>
+  </div>
+</div>
+
+<ng-template #loggedOut>
+  <div *ngIf="!isLogged" class="container border rounded">
+    <h5 class="text-center">Iniciar Sesión</h5>
+    <form name="form" #f="ngForm" novalidate (ngSubmit)="onLogin()">
+      <div class="form-group mt-2">
+        <label for="nombreUsuario">Nombre de Usuario: </label>
+        <input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" [(ngModel)]="form.nombreUsuario"
+               autocomplete="off" required>
+      </div>
+      <div class="form-group mt-2">
+        <label for="password">Contraseña: </label>
+        <input type="password" class="form-control" name="password" id="password" [(ngModel)]="form.password"
+               autocomplete="off" required>
+      </div>
+      <div class="form-group mt-3">
+        <button type="submit" class="btn btn-success" [disabled]="!f.valid"><i class="fas fa-sign-in-alt"></i> Login
+        </button>
+        <a class="btn btn-primary ms-3" [routerLink]="['/registro']"><i class="fas fa-user-plus"></i> Crear Cuenta
+        </a>
+        <p *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">ERROR al iniciar sesión: {{errorMsg}}</p>
+      </div>
+    </form>
+  </div>
+</ng-template>
