@@ -54,8 +54,8 @@ export class HeaderComponent implements OnInit {
     this.tokenService.logOut();
     this.isLogin = false;
     this.authority = '';
-    swal.fire('Sesión cerrada', 'Sesión cerrada correctamente', 'success');
     window.location.href = '/home';
+    swal.fire('Sesión cerrada', 'Sesión cerrada correctamente', 'success');
   }
 
 }
