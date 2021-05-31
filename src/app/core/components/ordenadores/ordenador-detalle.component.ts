@@ -25,7 +25,6 @@ export class OrdenadorDetalleComponent implements OnInit {
           this.ordenadorService.getOrdenador(id).subscribe(
             ordenador => {
               this.ordenador = ordenador;
-              console.log(this.ordenador);
             }
           );
         }

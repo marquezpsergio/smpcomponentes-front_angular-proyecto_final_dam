@@ -40,6 +40,7 @@ export class OrdenadorService {
 
   create(ordenador: Ordenador): Observable<Ordenador> {
     return this.http.post<Ordenador>(this.urlEndPoint, ordenador, {headers: this.httpHeaders}).pipe(
+      map((response) => response as Ordenador),
       catchError(e => {
         if (e.status === 400) {
           return throwError(e);

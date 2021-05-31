@@ -48,7 +48,6 @@ export class ComponentesFabricanteComponent implements OnInit {
   }
 
   delete(componente: Componente): void {
-    console.log(componente);
     const swalWithBootstrapButtons = swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',

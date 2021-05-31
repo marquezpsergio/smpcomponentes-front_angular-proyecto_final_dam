@@ -4,7 +4,7 @@ import {Fabricante} from '../../models/fabricante';
 import {CategoriaService} from '../../../core/services/categoria.service';
 import {FabricanteService} from '../../../core/services/fabricante.service';
 import {TokenService} from '../../../core/services/security/token.service';
-import {Router} from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -23,8 +23,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private categoriaService: CategoriaService,
               private fabricanteService: FabricanteService,
-              private tokenService: TokenService,
-              private router: Router) {
+              private tokenService: TokenService) {
   }
 
   ngOnInit(): void {
@@ -55,7 +54,8 @@ export class HeaderComponent implements OnInit {
     this.tokenService.logOut();
     this.isLogin = false;
     this.authority = '';
-    this.router.navigate(['home']);
+    swal.fire('Sesión cerrada', 'Sesión cerrada correctamente', 'success');
+    window.location.href = '/home';
   }
 
 }

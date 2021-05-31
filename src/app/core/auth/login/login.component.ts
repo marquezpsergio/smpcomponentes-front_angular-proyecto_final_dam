@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {LoginUsuario} from 'app/shared/models/security/login-usuario';
 import {AuthService} from '../../services/security/auth.service';
 import {TokenService} from '../../services/security/token.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -46,15 +47,19 @@ export class LoginComponent implements OnInit {
         this.isLogged = true;
         this.isLoginFail = false;
         this.roles = this.tokenService.getAuthorities();
+        this.username = this.tokenService.getUserName();
+
+        swal.fire('Sesión iniciada', 'Sesión iniciada correctamente', 'success');
 
         new Promise(resolve => setTimeout(resolve, 3000)).then(() => {
-          this.router.navigate(['/home']);
+          window.location.href = '/home';
         });
       },
-      (err: any) => {
+      () => {
         this.isLogged = false;
         this.isLoginFail = true;
-        this.errorMsg = err.error.message;
+        swal.fire('Error al iniciar sesión!', 'Usuario o contraseña incorrectos.', 'error');
+        this.errorMsg = 'Usuario o contraseña incorrectos.';
       }
     );
   }

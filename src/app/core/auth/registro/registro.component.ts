@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/security/auth.service';
 import {NuevoUsuario} from '../../../shared/models/security/nuevo-usuario';
-import {Router} from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -16,8 +16,7 @@ export class RegistroComponent implements OnInit {
   errorMsg = '';
   private usuario: any = {};
 
-  constructor(private authService: AuthService,
-              private router: Router) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -29,14 +28,17 @@ export class RegistroComponent implements OnInit {
         this.isRegister = true;
         this.isRegisterFail = false;
 
+        swal.fire('Usuario registrado', 'Su usuario ha sido creado correctamente', 'success');
+
         new Promise(resolve => setTimeout(resolve, 3000)).then(() => {
-          this.router.navigate(['/home']);
+          window.location.href = '/home';
         });
       },
       (err: any) => {
         this.isRegister = false;
         this.isRegisterFail = true;
-        this.errorMsg = err.error.message;
+        swal.fire('Error al crear su usuario!', err.error.mensaje, 'error');
+        this.errorMsg = err.error.mensaje;
       }
     );
   }

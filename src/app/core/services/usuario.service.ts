@@ -34,4 +34,10 @@ export class UsuarioService {
       })
     );
   }
+
+  getUsuarioByNombreUsuario(nombreUsuario): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.urlEndPoint}/usuario/${nombreUsuario}`).pipe(
+      map(response => response as Usuario)
+    );
+  }
 }
