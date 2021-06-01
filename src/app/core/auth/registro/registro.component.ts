@@ -38,7 +38,7 @@ export class RegistroComponent implements OnInit {
           this.tokenService.setAuthorities(data.authorities);
         });
 
-        new Promise(resolve => setTimeout(resolve, 3000)).then(() => {
+        new Promise(resolve => setTimeout(resolve, 1500)).then(() => {
           window.location.href = '/home';
         });
       },

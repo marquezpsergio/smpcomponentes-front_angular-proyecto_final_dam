@@ -39,14 +39,17 @@
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li *ngIf="isLogin" class="nav-item me-2">
+          <a [routerLink]="['/mis-configuraciones']" class="btn btn-success nav-item">
+            <i class="fas fa-laptop-code"></i> Mis Configuraciones </a>
+        </li>
         <li *ngIf="!isLogin" class="nav-item">
           <a [routerLink]="['/login']" class="btn btn-success nav-item"><i class="fas fa-sign-in-alt"></i> Iniciar
             Sesión </a>
         </li>
         <li *ngIf="isLogin" class="nav-item">
-          <a (click)="logOut()" class="btn btn-danger nav-item" style="cursor: pointer;"><i
-            class="fas fa-sign-out-alt"></i> Cerrar
-            Sesión </a>
+          <a (click)="logOut()" class="btn btn-danger nav-item">
+            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión </a>
         </li>
       </ul>
     </div>

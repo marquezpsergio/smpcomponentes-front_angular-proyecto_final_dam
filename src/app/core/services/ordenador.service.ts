@@ -38,6 +38,12 @@ export class OrdenadorService {
     );
   }
 
+  getOrdenadorByUsuario(usuarioId): Observable<Ordenador[]> {
+    return this.http.get<Ordenador[]>(`${this.urlEndPoint}/usuarios/${usuarioId}`).pipe(
+      map(response => response as Ordenador[])
+    );
+  }
+
   create(ordenador: Ordenador): Observable<Ordenador> {
     return this.http.post<Ordenador>(this.urlEndPoint, ordenador, {headers: this.httpHeaders}).pipe(
       map((response) => response as Ordenador),

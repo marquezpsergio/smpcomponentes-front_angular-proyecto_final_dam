@@ -1,7 +1,9 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
+import es from '@angular/common/locales/es';
+import {registerLocaleData} from '@angular/common';
 // Components
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './shared/components/header/header.component';
@@ -16,6 +18,7 @@ import {OrdenadoresComponent} from './core/components/ordenadores/ordenadores.co
 import {OrdenadorDetalleComponent} from './core/components/ordenadores/ordenador-detalle.component';
 import {LoginComponent} from './core/auth/login/login.component';
 import {RegistroComponent} from './core/auth/registro/registro.component';
+import {OrdenadoresUsuarioComponent} from './core/components/ordenadores-usuario/ordenadores-usuario.component';
 // Services
 import {ComponenteService} from './core/services/componente.service';
 import {FormsModule} from '@angular/forms';
@@ -28,6 +31,7 @@ const routes: Routes = [
   {path: 'componentes', component: ComponentesComponent},
   {path: 'ordenadores', component: OrdenadoresComponent},
   {path: 'ordenadores-detalles/:id', component: OrdenadorDetalleComponent},
+  {path: 'mis-configuraciones', component: OrdenadoresUsuarioComponent},
   {path: 'componentes/categoria/:id', component: ComponentesCategoriaComponent},
   {path: 'componentes/fabricante/:id', component: ComponentesFabricanteComponent},
   {path: 'componentes/form', component: FormComponent},
@@ -36,6 +40,8 @@ const routes: Routes = [
   {path: 'registro', component: RegistroComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
+
+registerLocaleData(es);
 
 @NgModule({
   declarations: [
@@ -51,7 +57,8 @@ const routes: Routes = [
     OrdenadoresComponent,
     OrdenadorDetalleComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    OrdenadoresUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +66,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ComponenteService, interceptorProvider],
+  providers: [ComponenteService, interceptorProvider, {provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
