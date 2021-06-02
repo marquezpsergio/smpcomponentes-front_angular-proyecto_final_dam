@@ -1,9 +1,16 @@
-#img_logo {
-  width: 40px;
-}
 
 .img_slider {
-  max-height: 500px;
+  height: 400px;
+}
+
+@media (max-width: 800px) {
+  .img_slider {
+    height: 350px;
+  }
+}
+
+#img_logo {
+  width: 40px;
 }
 
 .carousel-caption {
