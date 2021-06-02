@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, OnInit} from '@angular/core';
 import {Componente} from '../../../shared/models/componente';
 import {ComponenteService} from '../../services/componente.service';
 import swal from 'sweetalert2';
@@ -9,9 +9,10 @@ import {TokenService} from '../../services/security/token.service';
   templateUrl: './componentes.component.html',
   styleUrls: ['./componentes.component.css']
 })
-export class ComponentesComponent implements OnInit {
+export class ComponentesComponent implements OnInit, AfterViewChecked {
 
   componentes: Componente[];
+  pageOfItems: Array<any>;
   authority: string;
 
   constructor(private componenteService: ComponenteService,
@@ -30,6 +31,10 @@ export class ComponentesComponent implements OnInit {
     this.componenteService.getComponentes().subscribe(
       componentes => this.componentes = componentes
     );
+  }
+
+  ngAfterViewChecked(): void {
+    document.getElementsByClassName('pagination')[0].classList.add('justify-content-center');
   }
 
   delete(componente: Componente): void {
@@ -63,5 +68,9 @@ export class ComponentesComponent implements OnInit {
         );
       }
     });
+  }
+
+  onChangePage(pageOfItems: Array<any>) {
+    this.pageOfItems = pageOfItems;
   }
 }

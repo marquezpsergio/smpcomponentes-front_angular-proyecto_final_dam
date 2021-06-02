@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, OnInit} from '@angular/core';
 import {ComponenteService} from 'app/core/services/componente.service';
 import {Componente} from 'app/shared/models/componente';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -12,9 +12,10 @@ import {TokenService} from '../../services/security/token.service';
   templateUrl: './componentes-categoria.component.html',
   styleUrls: ['./componentes-categoria.component.css']
 })
-export class ComponentesCategoriaComponent implements OnInit {
+export class ComponentesCategoriaComponent implements OnInit, AfterViewChecked {
 
   componentes: Componente[];
+  pageOfItems: Array<any>;
   categoria: Categoria;
   authority: string;
 
@@ -45,6 +46,10 @@ export class ComponentesCategoriaComponent implements OnInit {
         );
       }
     });
+  }
+
+  ngAfterViewChecked(): void {
+    document.getElementsByClassName('pagination')[0].classList.add('justify-content-center');
   }
 
   delete(componente: Componente): void {
@@ -80,4 +85,7 @@ export class ComponentesCategoriaComponent implements OnInit {
     });
   }
 
+  onChangePage(pageOfItems: Array<any>) {
+    this.pageOfItems = pageOfItems;
+  }
 }

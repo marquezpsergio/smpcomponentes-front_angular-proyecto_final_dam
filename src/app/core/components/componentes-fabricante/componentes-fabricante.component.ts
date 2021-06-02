@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, OnInit} from '@angular/core';
 import {Componente} from 'app/shared/models/componente';
 import {Fabricante} from '../../../shared/models/fabricante';
 import {FabricanteService} from '../../services/fabricante.service';
@@ -12,9 +12,10 @@ import {TokenService} from '../../services/security/token.service';
   templateUrl: './componentes-fabricante.component.html',
   styleUrls: ['./componentes-fabricante.component.css']
 })
-export class ComponentesFabricanteComponent implements OnInit {
+export class ComponentesFabricanteComponent implements OnInit, AfterViewChecked {
 
   componentes: Componente[];
+  pageOfItems: Array<any>;
   fabricante: Fabricante;
   authority: string;
 
@@ -45,6 +46,10 @@ export class ComponentesFabricanteComponent implements OnInit {
         );
       }
     });
+  }
+
+  ngAfterViewChecked(): void {
+    document.getElementsByClassName('pagination')[0].classList.add('justify-content-center');
   }
 
   delete(componente: Componente): void {
@@ -78,6 +83,10 @@ export class ComponentesFabricanteComponent implements OnInit {
         );
       }
     });
+  }
+
+  onChangePage(pageOfItems: Array<any>) {
+    this.pageOfItems = pageOfItems;
   }
 
 }
