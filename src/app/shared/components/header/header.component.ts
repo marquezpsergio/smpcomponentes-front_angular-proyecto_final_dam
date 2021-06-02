@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
       categorias => this.categorias = categorias
     );
 
-    this.fabricanteService.getFabricantes().subscribe(
+    this.fabricanteService.getFabricantesComponentes().subscribe(
       fabricantes => this.fabricantes = fabricantes
     );
 
