@@ -1,7 +1,7 @@
-<app-navbar-filtros-componentes></app-navbar-filtros-componentes>
-
 <h3 *ngIf="categoria && componentes && componentes.length > 0" class="text-center mb-4 alert alert-dark">Componentes de
   la categoría '{{categoria.nombre}}'</h3>
+
+<app-navbar-filtros-componentes></app-navbar-filtros-componentes>
 
 <div *ngIf="!componentes" class="alert alert-info">Cargando componentes...</div>
 

@@ -1,8 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Categoria} from '../../models/categoria';
-import {Fabricante} from '../../models/fabricante';
-import {CategoriaService} from '../../../core/services/categoria.service';
-import {FabricanteService} from '../../../core/services/fabricante.service';
 import {TokenService} from '../../../core/services/security/token.service';
 import swal from 'sweetalert2';
 
@@ -14,27 +10,15 @@ import swal from 'sweetalert2';
 export class HeaderComponent implements OnInit {
 
   titulo = 'SMPComponentes';
-  categorias: Categoria[];
-  fabricantes: Fabricante[];
 
   isLogin = false;
   roles: string[];
   authority: string;
 
-  constructor(private categoriaService: CategoriaService,
-              private fabricanteService: FabricanteService,
-              private tokenService: TokenService) {
+  constructor(private tokenService: TokenService) {
   }
 
   ngOnInit(): void {
-    this.categoriaService.getCategorias().subscribe(
-      categorias => this.categorias = categorias
-    );
-
-    this.fabricanteService.getFabricantesComponentes().subscribe(
-      fabricantes => this.fabricantes = fabricantes
-    );
-
     if (this.tokenService.getToken()) {
       this.isLogin = true;
       this.roles = [];

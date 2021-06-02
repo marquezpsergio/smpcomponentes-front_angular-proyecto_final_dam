@@ -175,7 +175,7 @@ export class ConfiguratorComponent implements OnInit {
       this.cajaTorreLinea,
       this.fuenteAlimLinea];
 
-    if (this.ventilacionLinea.id > 0 && this.ventilacionLinea !== undefined && this.ventilacionLinea !== null) {
+    if (this.ventilacionLinea.componente && this.ventilacionLinea !== undefined && this.ventilacionLinea !== null) {
       this.ordenador.lineasOrdenador.push(this.ventilacionLinea);
     }
 
