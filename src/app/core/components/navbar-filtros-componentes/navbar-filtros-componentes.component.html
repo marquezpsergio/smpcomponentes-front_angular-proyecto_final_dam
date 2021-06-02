@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand">
+  <div class="container-fluid">
+    <div id="navbarSupportedContentFiltros">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <span class="nav-link text-dark"><i class="fas fa-filter"></i> Filtros: </span>
+        </li>
+        <li class="nav-item dropdown">
+          <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href=""
+             id="navbarDropdownCategoria" role="button" routerLinkActive="active">
+            Categorías
+          </a>
+          <ul aria-labelledby="navbarDropdownCategoria" class="dropdown-menu">
+            <li *ngFor="let categoria of categorias"><a [routerLink]="['/componentes/categoria', categoria.id]"
+                                                        class="dropdown-item">{{categoria.nombre}}</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href=""
+             id="navbarDropdownFabricante" role="button" routerLinkActive="active">
+            Fabricantes
+          </a>
+          <ul aria-labelledby="navbarDropdownFabricante" class="dropdown-menu">
+            <li *ngFor="let fabricante of fabricantes"><a [routerLink]="['/componentes/fabricante', fabricante.id]"
+                                                          class="dropdown-item">{{fabricante.nombre}}</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,1 +1,67 @@
-<h1 class="text-center">Bienvenido a SMPComponentes<span *ngIf="info.token">, {{info.nombreUsuario}}</span></h1>
+<h3 class="my-4 text-center"><img alt="Logo SMPComponentes" id="img_logo" src="/assets/logo.png"> Bienvenido a
+  SMPComponentes<span *ngIf="info.token">, {{info.nombreUsuario}}</span></h3>
+
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-10 col-xl-8">
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel" data-interval="2500">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+
+        <div class="carousel-item">
+          <img src="/assets/slider/slider1.jpg" class="w-100 img_slider rounded" alt="Configura tu nuevo ordenador">
+          <div class="carousel-caption d-none d-lg-block rounded">
+            <h5>¡Configura tu nuevo ordenador!</h5>
+            <p>Realizar una configuración de tu nuevo ordenador está a un click. En nuestra página, usted podrá utilizar
+              nuestro configurador para crear su próximo ordenador... ¡Incluso el de sus sueños!</p>
+            <p><a class="btn btn-primary ms-3" [routerLink]="['/configurador']"><i class="fas fa-laptop-medical"></i>
+              Configurar ordenador
+            </a></p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="d-block text-center">
+            <img src="/assets/slider/slider2.jpg" class=" w-100 img_slider rounded" alt="Nuestros componentes">
+          </div>
+          <div class="carousel-caption d-none d-lg-block rounded">
+            <h5>¡Échale un vistazo a nuestros componentes!</h5>
+            <p>Tenemos un gran número de componentes a su disposición para que pueda consultarlos y filtrar por
+              diferentes
+              opciones, adaptándonos a lo que usted esté buscando en el momento.</p>
+            <p><a class="btn btn-info ms-3" [routerLink]="['/componentes']"><i
+              class="fas fa-microchip"></i> Ver nuestros componentes</a></p>
+          </div>
+        </div>
+
+        <div class="carousel-item active">
+          <img src="/assets/slider/slider3.jpg" class="w-100 img_slider rounded" alt="Ventajas">
+          <div class="carousel-caption d-none d-lg-block rounded">
+            <h5>¡Regístrate y disfruta de las ventajas!</h5>
+            <p>Podrás configurar tu ordenador y consultar todas aquellas que has realizado anteriormente. Además, tu
+              configuración podrá aparecer entre las más destacadas! Registrate haciendo click en el botón.</p>
+            <p><a class="btn btn-warning ms-3" [routerLink]="['/registro']"><i class="fas fa-user-plus"></i> Crear
+              nueva cuenta
+            </a></p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">{{titulo}}</a>
+    <a class="navbar-brand" href="#"><img alt="Logo SMPComponentes" class="me-2" id="img_logo"
+                                          src="/assets/logo.png">{{titulo}}</a>
     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
@@ -12,30 +13,12 @@
             <i class="fas fa-laptop-medical"></i> Configura tu PC!</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/componentes']" class="nav-link" routerLinkActive="active">Componentes</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href=""
-             id="navbarDropdownCategoria" role="button" routerLinkActive="active">
-            Categorías
-          </a>
-          <ul aria-labelledby="navbarDropdownCategoria" class="dropdown-menu">
-            <li *ngFor="let categoria of categorias"><a [routerLink]="['/componentes/categoria', categoria.id]"
-                                                        class="dropdown-item">{{categoria.nombre}}</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href=""
-             id="navbarDropdownFabricante" role="button" routerLinkActive="active">
-            Fabricantes
-          </a>
-          <ul aria-labelledby="navbarDropdownFabricante" class="dropdown-menu">
-            <li *ngFor="let fabricante of fabricantes"><a [routerLink]="['/componentes/fabricante', fabricante.id]"
-                                                          class="dropdown-item">{{fabricante.nombre}}</a></li>
-          </ul>
+          <a [routerLink]="['/componentes']" class="nav-link" routerLinkActive="active"><i class="fas fa-microchip"></i>
+            Nuestros componentes</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/ordenadores']" class="nav-link" routerLinkActive="active">Últimos ordenadores</a>
+          <a [routerLink]="['/ordenadores']" class="nav-link" routerLinkActive="active"><i
+            class="fas fa-laptop-house"></i> Últimos ordenadores</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">

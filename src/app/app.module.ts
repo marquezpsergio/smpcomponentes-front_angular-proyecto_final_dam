@@ -4,6 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import es from '@angular/common/locales/es';
 import {registerLocaleData} from '@angular/common';
+import {JwPaginationModule} from 'jw-angular-pagination';
 // Components
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './shared/components/header/header.component';
@@ -19,6 +20,7 @@ import {OrdenadorDetalleComponent} from './core/components/ordenadores/ordenador
 import {LoginComponent} from './core/auth/login/login.component';
 import {RegistroComponent} from './core/auth/registro/registro.component';
 import {OrdenadoresUsuarioComponent} from './core/components/ordenadores-usuario/ordenadores-usuario.component';
+import {NavbarFiltrosComponentesComponent} from './core/components/navbar-filtros-componentes/navbar-filtros-componentes.component';
 // Services
 import {ComponenteService} from './core/services/componente.service';
 import {FormsModule} from '@angular/forms';
@@ -58,12 +60,14 @@ registerLocaleData(es);
     OrdenadorDetalleComponent,
     LoginComponent,
     RegistroComponent,
-    OrdenadoresUsuarioComponent
+    OrdenadoresUsuarioComponent,
+    NavbarFiltrosComponentesComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    JwPaginationModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ComponenteService, interceptorProvider, {provide: LOCALE_ID, useValue: 'es'}],

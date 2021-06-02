@@ -1,4 +1,7 @@
-<h3 *ngIf="fabricante" class="text-center">Componentes del fabricante '{{fabricante.nombre}}'</h3>
+<app-navbar-filtros-componentes></app-navbar-filtros-componentes>
+
+<h3 *ngIf="fabricante && componentes && componentes.length > 0" class="text-center mb-4 alert alert-dark">Componentes
+  del fabricante '{{fabricante.nombre}}'</h3>
 
 <div *ngIf="!componentes" class="alert alert-info">Cargando componentes...</div>
 
@@ -8,7 +11,9 @@
   </button>
 </div>
 
-<div *ngIf="componentes?.length == 0" class="alert alert-danger">No existen componentes.</div>
+<h5 *ngIf="componentes?.length == 0" class="alert alert-danger text-center"><i class="fas fa-exclamation-triangle"></i>
+  Oops... No hemos podido encontrar componentes del
+  fabricante <span *ngIf="fabricante"> '{{fabricante.nombre}}'</span></h5>
 
 <div *ngIf="componentes && componentes.length > 0" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4">
   <div *ngFor="let componente of componentes" class="col">

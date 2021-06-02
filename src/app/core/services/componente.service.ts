@@ -34,7 +34,7 @@ export class ComponenteService {
           return throwError(e);
         }
         this.router.navigate(['/componentes']);
-        swal.fire('ERROR!', e.error.message, 'error');
+        swal.fire('Ooops...!', e.error.message, 'error');
         return throwError(e);
       })
     );

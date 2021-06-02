@@ -30,7 +30,7 @@ export class RegistroComponent implements OnInit {
         this.isRegister = true;
         this.isRegisterFail = false;
 
-        swal.fire('Usuario registrado', 'Su usuario ha sido registrado correctamente', 'success');
+        swal.fire('Usuario registrado', '¡Su usuario ha sido registrado correctamente!', 'success');
 
         this.authService.login(this.usuario).subscribe(data => {
           this.tokenService.setToken(data.token);
@@ -38,14 +38,14 @@ export class RegistroComponent implements OnInit {
           this.tokenService.setAuthorities(data.authorities);
         });
 
-        new Promise(resolve => setTimeout(resolve, 1500)).then(() => {
+        new Promise(resolve => setTimeout(resolve, 2000)).then(() => {
           window.location.href = '/home';
         });
       },
       (err: any) => {
         this.isRegister = false;
         this.isRegisterFail = true;
-        swal.fire('Error al crear su usuario!', err.error.mensaje, 'error');
+        swal.fire('¡Error al crear su usuario!', err.error.mensaje, 'error');
         this.errorMsg = err.error.mensaje;
       }
     );

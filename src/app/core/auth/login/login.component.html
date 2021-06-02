@@ -27,7 +27,7 @@
         </button>
         <a class="btn btn-primary ms-3" [routerLink]="['/registro']"><i class="fas fa-user-plus"></i> Crear Cuenta
         </a>
-        <p *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">ERROR al iniciar sesión: {{errorMsg}}</p>
+        <p *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Error al iniciar sesión: {{errorMsg}}</p>
       </div>
     </form>
   </div>

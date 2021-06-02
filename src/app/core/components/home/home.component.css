@@ -1,0 +1,11 @@
+#img_logo {
+  width: 40px;
+}
+
+.img_slider {
+  max-height: 500px;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.7);
+}

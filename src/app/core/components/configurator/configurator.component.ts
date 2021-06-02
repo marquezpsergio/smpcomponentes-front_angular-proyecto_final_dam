@@ -183,7 +183,7 @@ export class ConfiguratorComponent implements OnInit {
       (ordenador: Ordenador) => {
         this.ordenador = ordenador;
         this.router.navigate(['/ordenadores']);
-        swal.fire('Nuevo ordenador', 'Ordenador creado con éxito', 'success');
+        swal.fire('¡Ordenador configurado!', 'Su ordenador ha sido creado con éxito.', 'success');
       },
       err => {
         this.errores = err.error.errors as string[];

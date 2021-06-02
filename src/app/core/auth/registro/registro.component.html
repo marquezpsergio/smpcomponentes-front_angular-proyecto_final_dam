@@ -31,7 +31,8 @@
         <button type="submit" class="btn btn-success" [disabled]="!f.valid"><i class="fas fa-user-plus"></i> Crear
           Cuenta
         </button>
-        <p *ngIf="f.submitted && isRegisterFail" class="alert alert-danger mt-3">ERROR al registrarse: {{errorMsg}}</p>
+        <p *ngIf="f.submitted && isRegisterFail" class="alert alert-danger mt-3">Error al hacer el
+          registro: {{errorMsg}}</p>
       </div>
     </form>
   </div>

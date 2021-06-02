@@ -29,7 +29,7 @@ export class LineaOrdenadorService {
         if (e.status === 400) {
           return throwError(e);
         }
-        swal.fire('ERROR!', e.error.message, 'error');
+        swal.fire('Ooops...!', e.error.message, 'error');
         return throwError(e);
       })
     );

@@ -32,7 +32,7 @@ export class OrdenadorService {
           return throwError(e);
         }
         this.router.navigate(['/ordenadores']);
-        swal.fire('ERROR!', e.error.message, 'error');
+        swal.fire('Ooops...!', e.error.message, 'error');
         return throwError(e);
       })
     );
@@ -51,7 +51,7 @@ export class OrdenadorService {
         if (e.status === 400) {
           return throwError(e);
         }
-        swal.fire('ERROR!', e.error.message, 'error');
+        swal.fire('Ooops...!', e.error.message, 'error');
         return throwError(e);
       })
     );
