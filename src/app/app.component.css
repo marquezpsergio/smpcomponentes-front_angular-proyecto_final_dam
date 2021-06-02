@@ -1,1 +1,3 @@
-@import "~animate.css/animate.min.css";
+.container-fluid {
+  min-height: 88vh;
+}
