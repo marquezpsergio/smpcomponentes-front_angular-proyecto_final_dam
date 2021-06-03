@@ -8,17 +8,21 @@ import {TokenService} from 'app/core/services/security/token.service';
 })
 export class HomeComponent implements OnInit {
 
-  info: any = {};
+  isLogin: boolean;
+  nombreUsuario: string;
 
   constructor(private tokenService: TokenService) {
   }
 
   ngOnInit() {
-    this.info = {
-      token: this.tokenService.getToken(),
-      nombreUsuario: this.tokenService.getUserName(),
-      authorities: this.tokenService.getAuthorities()
-    };
+    if (this.tokenService.getToken()) {
+      this.isLogin = true;
+      this.nombreUsuario = this.tokenService.getUserName();
+    }
+
+    new Promise(resolve => setTimeout(resolve, 5000)).then(() => {
+      document.getElementById('bienvenido_h3').style.display = 'none';
+    });
   }
 
 }

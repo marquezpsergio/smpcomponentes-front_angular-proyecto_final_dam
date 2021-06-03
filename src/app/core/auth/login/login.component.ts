@@ -49,8 +49,10 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenService.getAuthorities();
         this.username = this.tokenService.getUserName();
 
-        new Promise(resolve => setTimeout(resolve, 1000)).then(() => {
-          window.location.href = '/home';
+        swal.fire('Login correcto!', 'Bienvenido de nuevo! Disfrute de nuestra página.', 'success').then(result => {
+          if (result.isConfirmed || result.isDenied || result.isDismissed) {
+            window.location.href = '/home';
+          }
         });
       },
       () => {

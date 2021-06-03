@@ -30,16 +30,16 @@ export class RegistroComponent implements OnInit {
         this.isRegister = true;
         this.isRegisterFail = false;
 
-        swal.fire('Usuario registrado', '¡Su usuario ha sido registrado correctamente!', 'success');
-
         this.authService.login(this.usuario).subscribe(data => {
           this.tokenService.setToken(data.token);
           this.tokenService.setUserName(data.nombreUsuario);
           this.tokenService.setAuthorities(data.authorities);
         });
 
-        new Promise(resolve => setTimeout(resolve, 2000)).then(() => {
-          window.location.href = '/home';
+        swal.fire('Usuario registrado', '¡Su usuario ha sido registrado correctamente!', 'success').then(result => {
+          if (result.isConfirmed || result.isDenied || result.isDismissed) {
+            window.location.href = '/home';
+          }
         });
       },
       (err: any) => {

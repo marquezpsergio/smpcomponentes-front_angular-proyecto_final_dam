@@ -1,15 +1,9 @@
-<div *ngIf="isRegister; else noRegister" class="text-center py-3">
+<div *ngIf="isRegister; else noRegister" class="text-center py-3 mt-3">
   <span class="alert alert-success text-center h5">Usuario registrado con éxito!</span>
-  <div class="p-1 my-5 text-center">
-    <div class="spinner-border" role="status">
-      <span class="visually-hidden">Redirigiendo...</span>
-    </div>
-    <p class="my-auto text-center">Redirigiendo...</p>
-  </div>
 </div>
 
 <ng-template #noRegister>
-  <div *ngIf="!isRegister" class="container border rounded">
+  <div *ngIf="!isRegister" class="container border rounded mt-3">
     <h5 class="text-center">Registro</h5>
     <form name="form" #f="ngForm" novalidate (ngSubmit)="onRegister()">
       <div class="form-group">
