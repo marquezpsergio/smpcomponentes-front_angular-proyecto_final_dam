@@ -11,10 +11,10 @@
   <div class="card-body">
     <form #configuratorForm="ngForm">
       <div class="form-group row my-3">
-        <label class="col-form-label col-md-2 offset-md-2" for="placaBase">
+        <label class="col-form-label col-md-2 offset-md-1" for="placaBase">
           Placa Base:
         </label>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <input #placaBase="ngModel" [(ngModel)]="placaBaseLinea.componente" class="form-control" id="placaBase"
                  list="list_placaBase" name="placaBase" placeholder="Seleccione una placa base" required
                  autocomplete="off"
@@ -30,17 +30,20 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2 text-center text-sm-left ml-1">
-          <p *ngIf="placaBaseLinea.componente != undefined">{{ placaBaseLinea.componente.nombre }}
-            | <span class="badge bg-primary"> {{ placaBaseLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        <div class="col-6 col-md-3 text-md-end pt-1 pt-md-0">
+          <p *ngIf="placaBaseLinea.componente != undefined">{{ placaBaseLinea.componente.nombre }}</p>
+        </div>
+        <div class="col-6 col-md-1 pt-1 pt-md-0">
+          <p *ngIf="placaBaseLinea.componente != undefined"
+             class="badge bg-primary"> {{ placaBaseLinea.componente.precio | number:'1.2-2'}}€</p>
         </div>
       </div>
 
       <div class="form-group row my-3">
-        <label class="col-form-label col-md-2 offset-md-2" for="procesador">
+        <label class="col-form-label col-md-2 offset-md-1" for="procesador">
           Procesador:
         </label>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <input #procesador="ngModel" [(ngModel)]="procesadorLinea.componente" class="form-control" id="procesador"
                  list="list_procesador" name="procesador" placeholder="Seleccione un procesador" required
                  autocomplete="off"
@@ -56,17 +59,20 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2 offset-sm-0 text-center text-sm-left ml-1">
-          <p *ngIf="procesadorLinea.componente != undefined">{{ procesadorLinea.componente.nombre }}
-            | <span class="badge bg-primary"> {{ procesadorLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        <div class="col-6 col-md-3 text-md-end pt-1 pt-md-0">
+          <p *ngIf="procesadorLinea.componente != undefined">{{ procesadorLinea.componente.nombre }}</p>
+        </div>
+        <div class="col-6 col-md-1 pt-1 pt-md-0">
+          <p *ngIf="procesadorLinea.componente != undefined"
+             class="badge bg-primary"> {{ procesadorLinea.componente.precio | number:'1.2-2'}}€</p>
         </div>
       </div>
 
       <div class="form-group row my-3">
-        <label class="col-form-label col-md-2 offset-md-2" for="tarjetaGrafica">
+        <label class="col-form-label col-md-2 offset-md-1" for="tarjetaGrafica">
           Tarjeta Gráfica:
         </label>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <input #tarjetaGrafica="ngModel" [(ngModel)]="tarjetaGraficaLinea.componente" class="form-control"
                  id="tarjetaGrafica" list="list_tarjetaGrafica" name="tarjetaGrafica"
                  placeholder="Seleccione una tarjeta grafica" required autocomplete="off"
@@ -83,17 +89,20 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2 text-center text-sm-left ml-1">
-          <p *ngIf="tarjetaGraficaLinea.componente != undefined">{{ tarjetaGraficaLinea.componente.nombre }}
-            | <span class="badge bg-primary"> {{ tarjetaGraficaLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        <div class="col-6 col-md-3 text-md-end pt-1 pt-md-0">
+          <p *ngIf="tarjetaGraficaLinea.componente != undefined">{{ tarjetaGraficaLinea.componente.nombre }}</p>
+        </div>
+        <div class="col-6 col-md-1 pt-1 pt-md-0">
+          <p *ngIf="tarjetaGraficaLinea.componente != undefined"
+             class="badge bg-primary"> {{ tarjetaGraficaLinea.componente.precio | number:'1.2-2'}}€</p>
         </div>
       </div>
 
       <div class="form-group row my-3">
-        <label class="col-form-label col-md-2 offset-md-2" for="memoriaRam">
+        <label class="col-form-label col-md-2 offset-md-1" for="memoriaRam">
           Memoria RAM:
         </label>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <input #memoriaRam="ngModel" [(ngModel)]="memoriaRamLinea.componente" class="form-control" id="memoriaRam"
                  list="list_memoriaRam" name="memoriaRam" placeholder="Seleccione una memoria RAM" required
                  autocomplete="off"
@@ -109,17 +118,20 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2 text-center text-sm-left ml-1">
-          <p *ngIf="memoriaRamLinea.componente != undefined">{{ memoriaRamLinea.componente.nombre }}
-            | <span class="badge bg-primary"> {{ memoriaRamLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        <div class="col-6 col-md-3 text-md-end pt-1 pt-md-0">
+          <p *ngIf="memoriaRamLinea.componente != undefined">{{ memoriaRamLinea.componente.nombre }}</p>
+        </div>
+        <div class="col-6 col-md-1 pt-1 pt-md-0">
+          <p *ngIf="memoriaRamLinea.componente != undefined"
+             class="badge bg-primary"> {{ memoriaRamLinea.componente.precio | number:'1.2-2'}}€</p>
         </div>
       </div>
 
       <div class="form-group row my-3">
-        <label class="col-form-label col-md-2 offset-md-2" for="fuenteAlim">
+        <label class="col-form-label col-md-2 offset-md-1" for="fuenteAlim">
           Fuente de alimentación:
         </label>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <input #fuenteAlim="ngModel" [(ngModel)]="fuenteAlimLinea.componente" class="form-control" id="fuenteAlim"
                  list="list_fuenteAlim" name="fuenteAlim" placeholder="Seleccione una fuente de alimentación" required
                  autocomplete="off"
@@ -135,17 +147,20 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2 text-center text-sm-left ml-1">
-          <p *ngIf="fuenteAlimLinea.componente != undefined">{{ fuenteAlimLinea.componente.nombre }}
-            | <span class="badge bg-primary">{{ fuenteAlimLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        <div class="col-6 col-md-3 text-md-end pt-1 pt-md-0">
+          <p *ngIf="fuenteAlimLinea.componente != undefined">{{ fuenteAlimLinea.componente.nombre }}</p>
+        </div>
+        <div class="col-6 col-md-1 pt-1 pt-md-0">
+          <p *ngIf="fuenteAlimLinea.componente != undefined"
+             class="badge bg-primary"> {{ fuenteAlimLinea.componente.precio | number:'1.2-2'}}€</p>
         </div>
       </div>
 
       <div class="form-group row my-3">
-        <label class="col-form-label col-md-2 offset-md-2" for="discoDuro">
+        <label class="col-form-label col-md-2 offset-md-1" for="discoDuro">
           Disco Duro:
         </label>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <input [(ngModel)]="discoDuroLinea.componente" class="form-control" id="discoDuro" list="list_discoDuro"
                  name="discoDuro" placeholder="Seleccione un disco duro" autocomplete="off"
                  (change)="discoDuroChange($event.target.value)">
@@ -155,17 +170,20 @@
             </option>
           </datalist>
         </div>
-        <div class="col-md-2 text-center text-sm-left ml-1">
-          <p *ngIf="discoDuroLinea.componente != undefined">{{ discoDuroLinea.componente.nombre }}
-            | <span class="badge bg-primary"> {{ discoDuroLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        <div class="col-6 col-md-3 text-md-end pt-1 pt-md-0">
+          <p *ngIf="discoDuroLinea.componente != undefined">{{ discoDuroLinea.componente.nombre }}</p>
+        </div>
+        <div class="col-6 col-md-1 pt-1 pt-md-0">
+          <p *ngIf="discoDuroLinea.componente != undefined"
+             class="badge bg-primary"> {{ discoDuroLinea.componente.precio | number:'1.2-2'}}€</p>
         </div>
       </div>
 
       <div class="form-group row my-3">
-        <label class="col-form-label col-md-2 offset-md-2" for="cajaTorre">
+        <label class="col-form-label col-md-2 offset-md-1" for="cajaTorre">
           Caja/Torre:
         </label>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <input #cajaTorre="ngModel" [(ngModel)]="cajaTorreLinea.componente" class="form-control" id="cajaTorre"
                  list="list_cajaTorre" name="cajaTorre" placeholder="Seleccione una caja o torre" required
                  autocomplete="off"
@@ -181,17 +199,20 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2 text-center text-sm-left ml-1">
-          <p *ngIf="cajaTorreLinea.componente != undefined">{{ cajaTorreLinea.componente.nombre }}
-            | <span class="badge bg-primary"> {{ cajaTorreLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        <div class="col-6 col-md-3 text-md-end pt-1 pt-md-0">
+          <p *ngIf="cajaTorreLinea.componente != undefined">{{ cajaTorreLinea.componente.nombre }}</p>
+        </div>
+        <div class="col-6 col-md-1 pt-1 pt-md-0">
+          <p *ngIf="cajaTorreLinea.componente != undefined"
+             class="badge bg-primary"> {{ cajaTorreLinea.componente.precio | number:'1.2-2'}}€</p>
         </div>
       </div>
 
       <div class="form-group row my-3">
-        <label class="col-form-label col-md-2 offset-md-2" for="ventilacion">
+        <label class="col-form-label col-md-2 offset-md-1" for="ventilacion">
           Ventilación:
         </label>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <input [(ngModel)]="ventilacionLinea.componente" class="form-control" id="ventilacion" list="list_ventilacion"
                  name="ventilacion" placeholder="Seleccione ventilación" autocomplete="off"
                  (change)="ventilacionChange($event.target.value)">
@@ -201,20 +222,27 @@
             </option>
           </datalist>
         </div>
-        <div class="col-md-2 text-center text-sm-left ml-1">
-          <p *ngIf="ventilacionLinea.componente != undefined">{{ ventilacionLinea.componente.nombre }}
-            | <span class="badge bg-primary"> {{ ventilacionLinea.componente.precio | number:'1.2-2'}}€</span></p>
+        <div class="col-6 col-md-3 text-md-end pt-1 pt-md-0">
+          <p *ngIf="ventilacionLinea.componente != undefined">{{ ventilacionLinea.componente.nombre }}</p>
+        </div>
+        <div class="col-6 col-md-1 pt-1 pt-md-0">
+          <p *ngIf="ventilacionLinea.componente != undefined"
+             class="badge bg-primary"> {{ ventilacionLinea.componente.precio | number:'1.2-2'}}€</p>
         </div>
       </div>
 
-      <div class="form-group row my-2 pt-3 text-end">
+      <div class="form-group row my-2 pt-3">
         <hr>
-        <div class="col-md-11" *ngIf="ordenador.precioTotal > 0.01">
-          <h5>PRECIO TOTAL: <span class="badge bg-danger">{{ordenador.precioTotal | number:'1.2-2'}}€</span></h5>
+        <div class="col-6 col-md-3 offset-md-7 text-end pt-1 pt-md-0">
+          <h5 *ngIf="ordenador.precioTotal > 0.01">PRECIO TOTAL:</h5>
+        </div>
+        <div class="col-6 col-md-1 pt-1 pt-md-0">
+          <h5 *ngIf="ordenador.precioTotal > 0.01"
+              class="badge bg-danger"> {{ordenador.precioTotal | number:'1.2-2'}}€</h5>
         </div>
       </div>
       <div class="form-group row mt-3 pt-3 text-center">
-        <div class="col-md-8 offset-sm-2">
+        <div class="col-md-8 offset-md-2">
           <button (click)="create()" [disabled]="!configuratorForm.form.valid || !isLogin" class="btn btn-success w-100"
                   role="button"><i class="fas fa-plus-circle"></i> Configurar Ordenador!
           </button>

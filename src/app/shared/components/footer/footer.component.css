@@ -3,3 +3,108 @@
   bottom: 0;
   width: 100%;
 }
+
+.social-network {
+  list-style: none;
+  display: inline;
+  margin-left: 0 !important;
+  padding: 0;
+}
+
+.social-network a.icoFacebook:hover {
+  background-color: #3B5998;
+  color: white;
+}
+
+.social-network a.icoTwitter:hover {
+  background-color: #33ccff;
+  color: white;
+}
+
+.social-network a.icoInstagram:hover {
+  background: linear-gradient(#400080, transparent), linear-gradient(200deg, #d047d1, #ff0000, #ffff00);
+  color: white;
+}
+
+.social-network a.icoLinkedin:hover {
+  background-color: #007bb7;
+  color: white;
+}
+
+.social-network a.icoEmail:hover {
+  background: linear-gradient(#D44638, transparent), linear-gradient(180deg, #EEEEEE, #D44638, #B23121);
+  color: white;
+}
+
+.social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i, .social-network a.icoInstagram:hover i, .social-network a.icoLinkedin:hover i, .social-network a.icoEmail:hover i {
+  color: #fff;
+}
+
+a.socialIcon:hover, .socialHoverClass {
+  color: #44BCDD;
+}
+
+.social-circle a {
+  color: black;
+  display: inline-block;
+  position: relative;
+  margin: 0 auto 0 auto;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  width: 45px;
+  height: 45px;
+  font-size: 32px;
+}
+
+@media (min-width: 576px) {
+  .social-circle a {
+    width: 70px;
+    height: 70px;
+    font-size: 45px;
+  }
+}
+
+@media (min-width: 768px) {
+  .social-circle a {
+    width: 70px;
+    height: 70px;
+    font-size: 45px;
+  }
+}
+
+.icono {
+  margin: 0;
+  text-align: center;
+}
+
+.social-circle a:hover .icono {
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.icono {
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.autor {
+  transition: all 0.5s;
+}
+
+.autor:hover {
+  font-size: 20px;
+  transition: all 0.5s;
+}
+
+footer * a {
+  background-color: #e9e9e9;
+}

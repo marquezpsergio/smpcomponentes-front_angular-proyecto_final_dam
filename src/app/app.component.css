@@ -1,3 +1,19 @@
-.container-fluid {
-  min-height: 88vh;
+@font-face {
+  font-family: dinpro;
+  src: url("/assets/fonts/DINPro.ttf") format("truetype");
 }
+
+.container-fluid {
+  min-height: 73vh;
+}
+
+@media (min-width: 992px) {
+  .container-fluid {
+    min-height: 68vh;
+  }
+}
+
+* {
+  font-family: dinpro, serif;
+}
+
